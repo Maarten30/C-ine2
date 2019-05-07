@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <string>
 #include "Usuario.h"
 using namespace std;
 using namespace containers;

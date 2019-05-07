@@ -5,6 +5,7 @@
  *      Author: maarten
  */
 #include <iostream>
+#include <string>
 using namespace std;
 
 #ifndef USUARIO_H_
