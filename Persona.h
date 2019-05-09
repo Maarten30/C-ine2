@@ -19,7 +19,7 @@ namespace persona
 		string nombre, apellido, dni;
 		Persona();
 		Persona (string nombre, string apellido, string dni);
-		~Persona();
+//		~Persona();
 
 	};
 }

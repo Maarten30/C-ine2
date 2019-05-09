@@ -12,6 +12,7 @@
  */
 
 //#include <iostream>
+//#include <cstdio>
 ////#include "pelicula.h"
 ////#include "cartelera.h"
 //using namespace std;
@@ -31,7 +32,7 @@
 //	this->nombre = nombre;
 //	this->apellido = apellido;
 //	this->dni = dni;
-//	this->co	digo = codigo;
+//	this->codigo = codigo;
 //}
 //
 //void Gestor:: menuGestor()
@@ -47,36 +48,33 @@
 //
 //
 //			cin >> opcion;
-////			switch (opcion)
-////				{
-////					case 1: cout << "Elija el cine que quiera editar:" << endl;
+//			switch (opcion)
+//				{
+//					case 1: cout << "Elija el cine que quiera editar:" << endl;
 ////							cin <<  nombrecart;
-////
-////							cout <<("\n Introduzca la nota:");
-////							scanf ("%d", &nota);
-////
-////							char *a=malloc(TAMANYO*sizeof(char));
-////
-////							printf("\n Introduzca el nombre:");
-////							fflush(stdin);
-////
-////							fgets(a,TAMANYO,stdin);
-////							printf("%s", a);
-////
-////							int i=0;
-////							for(i=0;i<5;i++){
-////								if( (notas+i)->id==-1)
-////								{
-////									break; //Para que pare el for y la i tenga el valor donde todavía no hay nada.
-////								}
-////							}
-////
-////							(notas+i)->id = id;
-////							(notas+i)->nota=nota;
-////							(notas+i)->nombre = malloc((strlen(a)+1)*sizeof(char));
-////							(notas+i)->nombre = strcpy((notas+i)->nombre, a);
-////					break;
-////
+//
+//							cout <<("\n Introduzca la nota:");
+//							scanf ("%d", opcion);
+//
+////							char *a=malloc(1*sizeof(char));
+//
+//							printf("\n Introduzca el nombre:");
+//							fflush(stdin);
+//
+//							fgets(a,1,stdin);
+//							printf("%s", a);
+//
+//							int i=0;
+//							for(i=0;i<5;i++){
+//								if( opcion==-1)
+//								{
+//									break; //Para que pare el for y la i tenga el valor donde todavía no hay nada.
+//								}
+//							}
+//
+//
+//					break;
+//
 ////					case 2: printf("\n Mostrando la lista...\n");
 ////
 ////							for (int i=0; i<5; i++)
@@ -103,20 +101,20 @@
 ////							media =(double) total/numAsigs;
 ////							printf ("%f", media);
 ////					break;
-////				}
-////		}
-////		while (opcion !=2);
-////}
-////
-////void NuevaCartelera()
-////{
-////}
-////
-////int exists(const char *fname)
-////{
-////}
+//				}
+//		}
+//		while (opcion !=2);
+//}
+//
+//void NuevaCartelera()
+//{
+//}
+//
+//int exists(const char *fname)
+//{
+//}
 //
 //
-//
-//
-//
+
+
+

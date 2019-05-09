@@ -5,6 +5,7 @@
  *      Author: maarten
  */
 #include <iostream>
+#include <cstdio>
 #include <string>
 #include "Persona.h"
 #include "Usuario.h"
@@ -15,6 +16,7 @@ using namespace persona;
 
 int main()
 {
+	printf("hola");
 
 	Usuario *us;
 
@@ -28,7 +30,7 @@ int main()
 	{
 		cout << "Menu Principal" <<endl;
 		cout << "1. Inicio Sesion" <<endl;
-		cout << "2. Estadísticas" <<endl;
+		cout << "2. Estadisticas" <<endl;
 
 		cin >> c;
 
