@@ -15,10 +15,8 @@ namespace persona
 {
 	class Persona
 	{
-	private:
-		string nombre, apellido, dni;
-
 	public:
+		string nombre, apellido, dni;
 		Persona();
 		Persona (string nombre, string apellido, string dni);
 		~Persona();
