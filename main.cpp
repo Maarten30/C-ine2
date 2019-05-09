@@ -6,11 +6,22 @@
  */
 #include <iostream>
 #include <string>
+#include "Persona.h"
 #include "Usuario.h"
 using namespace std;
+using namespace containers;
+using namespace persona;
+
 
 int main()
 {
+
+	Usuario *us;
+
+	us = new Usuario("mahandy", "Maarten", "Handels", "72557736G");
+
+	cout << us->getNombre() << endl;
+
 
 	char c;
 	do

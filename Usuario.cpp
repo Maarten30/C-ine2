@@ -19,12 +19,23 @@ Usuario::Usuario()
 
 }
 
-Usuario::Usuario(string nomUs, string nombre, string ape)
+Usuario::Usuario(string nomUs, string nombre, string ape, string dni)
 {
-	this->nomUsuario = nomUs;
+
 	this->nombre = nombre;
 	this->apellido = ape;
+	this->dni = dni;
+	this->nomUsuario = nomUs;
+
 }
+
+string Usuario::getNombre()
+{
+	return this->nombre;
+}
+
+
+
 
 
 
