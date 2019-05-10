@@ -8,6 +8,7 @@
 #ifndef CARTELERA_H_
 #define CARTELERA_H_
 #include <iostream>
+#include <string>
 using namespace std;
 namespace cartelera
 {
@@ -29,19 +30,44 @@ namespace cartelera
 
 	class Pelicula
 	{
-	private:
-		char *titulo;
-		char *descripcion;
-		int numSesiones;
-		Sesion *sesiones;
+		private:
+			string titulo;
+			string descripcion;
+			int numSesiones;
+
+
+		public:
+			Sesion *sesiones;
+			Pelicula();
+			//Pelicula(string titulo, string descripcion, int numSesiones, Sesion* sesiones);
+			string getTitulo();
+			void setTitulo(string titulo);
+			string getDesc();
+			void setDesc(string desc);
+			int getNumSesiones();
+			void setNumSesiones(int NumSesiones);
+			Sesion* getSesiones();
+			void setSesiones(Sesion* sesiones);
+
+
 	};
 
 	class Cartelera
 	{
-	private:
-		char *cine;
-		Pelicula *peliculas;
-		int numPelis;
+		private:
+			string cine;
+			int numPelis;
+
+		public:
+			Pelicula *peliculas;
+			Cartelera();
+			//Cartelera(string cine, Pelicula* peliculas, int numPelis);
+			string getCine();
+			void setCine(string cine);
+			Pelicula* getPeliculas();
+			void setPelis(Pelicula* Pelis);
+			int getNumPelis();
+			void setNumPelis(int NumPelis);
 	};
 }
 
