@@ -11,11 +11,37 @@
 using namespace std;
 namespace cartelera
 {
+	class Sesion
+	{
+		private:
+			int plazas;
+			double hora;
+
+		public:
+			Sesion();
+			Sesion(int plazas, double hora);
+			int getPlazas();
+			void setPlazas(int plazas);
+			double getHora();
+			void setHora(double hora);
+
+	};
+
+	class Pelicula
+	{
+	private:
+		char *titulo;
+		char *descripcion;
+		int numSesiones;
+		Sesion *sesiones;
+	};
+
 	class Cartelera
 	{
 	private:
-//		Pelicula *pelis;
-//
+		char *cine;
+		Pelicula *peliculas;
+		int numPelis;
 	};
 }
 
