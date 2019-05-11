@@ -5,6 +5,7 @@
  *      Author: maarten
  */
 #include <iostream>
+#include <string.h>
 #include "Cartelera.h"
 #include "Fichero.h"
 using namespace std;
@@ -25,8 +26,6 @@ Cartelera leerCartelera(char *cine)
 	strcat(fichero, "Cartelera.txt");
 
 	f = fopen(fichero, "r");
-
-
 
 	//cart.cine = malloc(sizeof(char)*TAMANYO_tit);
 

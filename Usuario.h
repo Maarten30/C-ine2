@@ -31,6 +31,7 @@ namespace containers
 	{
 			private:
 				string nomUsuario;
+				string contra;
 			public:
 				Usuario();
 				Usuario(string nombre, string apellido, string dni, string nomUs);
