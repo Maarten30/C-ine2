@@ -19,17 +19,17 @@ using namespace cartelera;
 void inicioSesion();
 void menuEstadisticas();
 void masTaquillera();
+void descuentos();
+
 int main()
 {
 	char* cart = "GML";
 
-
-	Usuario *us;
-
-	us = new Usuario("mahandy", "Maarten", "Handels", "72557736G");
-
-	cout << us->getNombre() << endl;
-
+//	Usuario *us;
+//
+//	us = new Usuario("mahandy", "Maarten", "Handels", "72557736G");
+//
+//	cout << us->getNombre() << endl;
 
 	char c;
 	do
@@ -61,31 +61,40 @@ void inicioSesion()
 	string nomUsuario;
 	cin >> nomUsuario;
 
-	cout << "Contraseña (DNI):" << endl;
+	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
 }
 
 void menuEstadisticas()
 {
-	char op;
-	cout << "¿Que estadisticas quieres consultar?" << endl;
+	int op=0;
+	cout << "Â¿Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
-	cout << "2. no se me ocurren mas cosas jajaja" << endl;
+	cout << "2. Â¡Echa un vistazo a los descuentos!" << endl;
 	cout << "3. Menu principal" << endl;
 	cin >> op;
 	switch (op)
 			{
 				case 1: masTaquillera();
 				break;
-				case 2:	// otro tipo de estadistica
+				case 2:	descuentos();
+				break;
+				case 3: main();
 				break;
 			}
 }
-void masTaquillera()
+void masTaquillera() //leer el fichero y coger la pelicula que mas entradas haya vendido
 {
 	char* peli;
 	cout << "La pelicula mas taquillera es: " << peli << endl;
 	main();
 
+}
+
+void descuentos()
+{
+	Cartelera *cart = new Cartelera();
+	cout<<"Descuentos de este mes:"<<endl;
+	cout<<"Introduzca el cine: "<<endl;
 }

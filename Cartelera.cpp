@@ -92,8 +92,6 @@ void Pelicula::setSesiones(Sesion* sesiones)
 	this->sesiones = sesiones;
 }
 
-
-
 //Clase Cartelera
 Cartelera::Cartelera()
 {

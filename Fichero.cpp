@@ -11,9 +11,6 @@
 using namespace std;
 using namespace cartelera;
 
-
-
-
 Cartelera leerCartelera(char *cine)
 {
 
@@ -57,8 +54,6 @@ Cartelera leerCartelera(char *cine)
 		cout << "El titulo de la peli es: " << buff2 << endl;
 		//strcpy(cart.peliculas[i].titulo,buff);
 		pelis[i].setTitulo(buff2);
-
-
 
 		//cart.peliculas[i].descripcion = malloc (sizeof(char)*TAMANYO_descr);
 		fscanf(f, " %[^\t\n]s", buff);

@@ -16,10 +16,7 @@ Persona:: Persona()
 	this->apellido = "";
 	this->dni = "";
 }
-//Persona::~Persona()
-//{
-//
-//}
+
 Persona:: Persona(string nombre, string apellido, string dni)
 {
 	this->nombre = nombre;
@@ -27,7 +24,10 @@ Persona:: Persona(string nombre, string apellido, string dni)
 	this->dni = dni;
 }
 
-
+//Persona::~Persona()
+//{
+//
+//}
 
 
 
