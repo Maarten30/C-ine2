@@ -9,28 +9,31 @@
 #include <string>
 #include "Persona.h"
 #include "Usuario.h"
+#include "Gestor.h"
 #include "Cartelera.h"
 #include "Fichero.h"
 using namespace std;
 using namespace containers;
 using namespace persona;
 using namespace cartelera;
+using namespace gestor;
 
 void inicioSesion();
 void menuEstadisticas();
 void masTaquillera();
 void descuentos();
+void menuGestor();
 
 int main()
 {
 	char* cart = "GML";
 
-	Cartelera cartel = leerCartelera(cart);
-
-	cout << "E nombre de la peli es: "<< cartel.peliculas[0].getTitulo() << endl;
-	cout << "La descripciond de la peli es: "<< cartel.peliculas[0].getDesc() << endl;
-	cout << "Las plazas disponibles son: "<< cartel.peliculas[0].sesiones[0].getPlazas() << endl;
-	cout << "Las hora es: "<< cartel.peliculas[0].sesiones[0].getHora() << endl;
+//	Cartelera cartel = leerCartelera(cart);
+//
+//	cout << "E nombre de la peli es: "<< cartel.peliculas[0].getTitulo() << endl;
+//	cout << "La descripciond de la peli es: "<< cartel.peliculas[0].getDesc() << endl;
+//	cout << "Las plazas disponibles son: "<< cartel.peliculas[0].sesiones[0].getPlazas() << endl;
+//	cout << "Las hora es: "<< cartel.peliculas[0].sesiones[0].getHora() << endl;
 
 //	Usuario *us;
 //
@@ -44,9 +47,10 @@ int main()
 		cout << "Menu Principal" <<endl;
 		cout << "1. Inicio Sesion" <<endl;
 		cout << "2. Estadisticas" <<endl;
-
+		cout << "3. Administrador" << endl;
+		cout <<"Introduzca una opción del 1-3:"<<endl;
+		cout << "Pulse 'q' para salir"<<endl;
 		cin >> c;
-		cout << c << endl;
 
 		if (c == '1')
 		{
@@ -56,9 +60,12 @@ int main()
 		{
 			menuEstadisticas();
 		}
+		else if (c == '3')
+		{
+			menuGestor();
+		}
 
 	}while(c!='q');
-
 	return 0;
 }
 
@@ -71,16 +78,24 @@ void inicioSesion()
 	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
+	do
+	{
+		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
+		cin >> dni;
+	}
+	while (dni.size() !=8);
 }
 
 void menuEstadisticas()
 {
 	int op=0;
-	cout << "Â¿Que estadisticas quieres consultar?" << endl;
+	cout << "¿Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
-	cout << "2. Â¡Echa un vistazo a los descuentos!" << endl;
+	cout << "2. ¡Echa un vistazo a los descuentos!" << endl;
 	cout << "3. Menu principal" << endl;
 	cin >> op;
+
+
 	switch (op)
 			{
 				case 1: masTaquillera();
@@ -93,8 +108,8 @@ void menuEstadisticas()
 }
 void masTaquillera() //leer el fichero y coger la pelicula que mas entradas haya vendido
 {
-	char* peli;
-	cout << "La pelicula mas taquillera es: " << peli << endl;
+	Pelicula peli;
+	cout << "La pelicula mas taquillera es: " << peli.getTitulo() << endl;
 	main();
 
 }
@@ -103,5 +118,12 @@ void descuentos()
 {
 	Cartelera *cart = new Cartelera();
 	cout<<"Descuentos de este mes:"<<endl;
+
 	cout<<"Introduzca el cine: "<<endl;
+//	cin >> cart->cine;
+}
+void menuGestor()
+{
+//	Gestor gestor = new Gestor();
+//	gestor.menuGestor();
 }
