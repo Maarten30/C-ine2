@@ -49,12 +49,14 @@ int main()
 	char c;
 	do
 	{
-		cout << "Menu Principal" <<endl;
-		cout << "1. Inicio Sesion" <<endl;
+		cout<<endl;
+		cout << "MENU PRINCIPAL" <<endl;
+		cout<<"-------------------"<<endl;
+		cout << "1. Inicio sesion" <<endl;
 		cout << "2. Estadisticas" <<endl;
 		cout << "3. Administrador" << endl;
 		cout << "4. Crear cuenta" << endl;
-		cout <<"Introduzca una opción del 1-4:"<<endl;
+		cout <<"Introduzca una opcion del 1-4:"<<endl;
 		cout << "Pulse 'q' para salir"<<endl;
 		cin >> c;
 
@@ -91,7 +93,7 @@ void inicioSesion(std::vector<containers::Usuario> users)
 
 	if (dni.size()!= 9)
 	{
-		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
+		cout << "La contrasenya es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
 //	do
@@ -105,12 +107,12 @@ void inicioSesion(std::vector<containers::Usuario> users)
 	{
 		if (!(nomUsuario.compare(a.getNombreUs()) && dni.compare(a.getDNI())))
 		{
-			cout << "La contrasena o nombre de usuario insertados no existen, registrese para poder acceder " << endl;
+			cout << "La contrasenya o nombre de usuario insertados no existen, registrese para poder acceder " << endl;
 			main();
 		}
 		else
 		{
-			cout << "Se ha registrado satisfactoriamente " << endl;
+			cout << "Se ha registrado satisfactoriamente " << a.getNombre()<<endl;
 		}
 	}
 
@@ -119,9 +121,9 @@ void inicioSesion(std::vector<containers::Usuario> users)
 void menuEstadisticas(std::vector<containers::Usuario> users)
 {
 	int op=0;
-	cout << "¿Que estadisticas quieres consultar?" << endl;
+	cout << "Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
-	cout << "2. ¡Echa un vistazo a los descuentos!" << endl;
+	cout << "2. Echa un vistazo a los descuentos!" << endl;
 	cout << "3. Media de edad de los usuarios que visitan el cine" << endl;
 	cout << "4. Menu principal" << endl;
 	cin >> op;
@@ -184,7 +186,7 @@ void nuevoUsuario(std::vector<containers::Usuario> users)
 	cin >> dni;
 	if (dni.size()!= 9)
 	{
-		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
+		cout << "La contrasenya es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
 //	do
@@ -199,7 +201,8 @@ void nuevoUsuario(std::vector<containers::Usuario> users)
 
 	users.push_back(*us);
 
-	cout << "nombre del usuario: " << nomUsuario << endl;
+//	cout << "nombre del usuario: " << nomUsuario << endl;
+	cout<<"Bienvenid@ "<< us->getNombre()<<"!"<<endl;
 }
 
 void mediaEdad(std::vector<containers::Usuario> users)
@@ -211,5 +214,5 @@ void mediaEdad(std::vector<containers::Usuario> users)
 		media = +users[i].getEdad();
 	}
 
-	cout << "La media de edad de las personas que visitan C-ine es de: " << media << "años." << endl;
+	cout << "La media de edad de las personas que visitan C-ine es de: " << media << "anyos." << endl;
 }
