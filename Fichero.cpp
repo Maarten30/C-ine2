@@ -6,6 +6,8 @@
  */
 #include <iostream>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "Cartelera.h"
 #include "Fichero.h"
 using namespace std;
@@ -83,13 +85,16 @@ Cartelera leerCartelera(char *cine)
 		}
 
 		pelis[i].setSesiones(sesiones);
+		cout << "La sesioncita es es: "<< pelis[i].sesiones[0].getHora() << endl;
 	}
 
 	cout << "El nombre de la peli 0 es: "<< pelis[0].getTitulo() << endl;
 
 	cart.peliculas = pelis;
 
-	cout << "El nombre de la peli 0-2 es: "<< cart.peliculas[0].getTitulo() << endl;
+	cout << "El nombre de la peli22 0 es: "<< cart.peliculas[0].getTitulo() << endl;
+
+	cout << "La sesion es: "<< cart.peliculas[0].sesiones[0].getHora() << endl;
 
 	return cart;
 }
