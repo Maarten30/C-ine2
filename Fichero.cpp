@@ -42,8 +42,8 @@ Cartelera leerCartelera(char *cine)
 	int numSesiones = 0;
 
 	fscanf(f, " %[^\t\n]s", buff);
-	buff2 = string(buff);
 	//strcpy(cart.cine, buff);
+	buff2 = string(buff);
 
 	cart.setCine(buff2);
 

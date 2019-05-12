@@ -33,12 +33,12 @@ int main()
 	std::vector<containers::Usuario> users;
 
 
-//	Cartelera cartel = leerCartelera(cart);
-//
-//	cout << "E nombre de la peli es: "<< cartel.peliculas[0].getTitulo() << endl;
-//	cout << "La descripciond de la peli es: "<< cartel.peliculas[0].getDesc() << endl;
-//	cout << "Las plazas disponibles son: "<< cartel.peliculas[0].sesiones[0].getPlazas() << endl;
-//	cout << "Las hora es: "<< cartel.peliculas[0].sesiones[0].getHora() << endl;
+	Cartelera cartel = leerCartelera(cart);
+
+	cout << "E nombre de la peli es: "<< cartel.peliculas[0].getTitulo() << endl;
+	cout << "La descripciond de la peli es: "<< cartel.peliculas[0].getDesc() << endl;
+	cout << "Las plazas disponibles son: "<< cartel.peliculas[0].sesiones[0].getPlazas() << endl;
+	cout << "Las hora es: "<< cartel.peliculas[0].sesiones[0].getHora() << endl;
 
 //	Usuario *us;
 //
