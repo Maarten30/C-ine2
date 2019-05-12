@@ -31,12 +31,12 @@ Usuario::Usuario(string nomUs, string nombre, string ape, string dni, int edad)
 
 }
 
-string Usuario::getNombre()
+string Persona::getNombre()
 {
 	return this->nombre;
 }
 
-string Usuario::getApellido()
+string Persona::getApellido()
 {
 	return this->apellido;
 }
@@ -46,7 +46,7 @@ string Usuario::getNombreUs()
 	return this->nomUsuario;
 }
 
-string Usuario::getDNI()
+string Persona::getDNI()
 {
 	return this->dni;
 }
@@ -56,8 +56,30 @@ int Usuario::getEdad()
 	return this->edad;
 }
 
+void Persona::setNombre(string nombre)
+{
+	this ->nombre = nombre;
+}
 
+void Persona::setApellido(string apellido)
+{
+	this ->apellido = apellido;
+}
 
+void Persona::setDni(string dni)
+{
+	this ->dni = dni;
+}
+
+void Usuario :: setNombreUs(string nombreUs)
+{
+	this ->nomUsuario = nombreUs;
+}
+
+void Usuario :: setEdad(int edad)
+{
+	this ->edad = edad;
+}
 
 
 

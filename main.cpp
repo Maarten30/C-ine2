@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
+#include <vector>
 #include "Persona.h"
 #include "Usuario.h"
 #include "Gestor.h"
@@ -18,17 +19,19 @@ using namespace persona;
 using namespace cartelera;
 using namespace gestor;
 
-void inicioSesion();
-void menuEstadisticas();
+void inicioSesion(std::vector<containers::Usuario> users);
+void menuEstadisticas(std::vector<containers::Usuario> users);
 void masTaquillera();
 void descuentos();
 void menuGestor();
-void rangoEdad();
-void nuevoUsuario();
+void mediaEdad(std::vector<containers::Usuario> users);
+void nuevoUsuario(std::vector<containers::Usuario> users);
 
 int main()
 {
 	char* cart = "GML";
+	std::vector<containers::Usuario> users;
+
 
 //	Cartelera cartel = leerCartelera(cart);
 //
@@ -57,11 +60,11 @@ int main()
 
 		if (c == '1')
 		{
-			inicioSesion();
+			inicioSesion(users);
 		}
 		else if (c == '2')
 		{
-			menuEstadisticas();
+			menuEstadisticas(users);
 		}
 		else if (c == '3')
 		{
@@ -69,14 +72,14 @@ int main()
 		}
 		else if (c == '4')
 		{
-			nuevoUsuario();
+			nuevoUsuario(users);
 		}
 
 	}while(c!='q');
 	return 0;
 }
 
-void inicioSesion()
+void inicioSesion(std::vector<containers::Usuario> users)
 {
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -85,22 +88,41 @@ void inicioSesion()
 	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
-	do
+
+	if (dni.size()!= 9)
 	{
 		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
-	while (dni.size() !=9);
+//	do
+//	{
+//		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
+//		cin >> dni;
+//	}
+//	while (dni.size() !=8);
+
+	for (Usuario a : users)
+	{
+		if (!(nomUsuario.compare(a.getNombreUs()) && dni.compare(a.getDNI())))
+		{
+			cout << "La contrasena o nombre de usuario insertados no existen, registrese para poder acceder " << endl;
+			main();
+		}
+		else
+		{
+			cout << "Se ha registrado satisfactoriamente " << endl;
+		}
+	}
 
 }
 
-void menuEstadisticas()
+void menuEstadisticas(std::vector<containers::Usuario> users)
 {
 	int op=0;
 	cout << "¿Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
 	cout << "2. ¡Echa un vistazo a los descuentos!" << endl;
-	cout << "3. Rango de edad que mas visita nuestros cines" << endl;
+	cout << "3. Media de edad de los usuarios que visitan el cine" << endl;
 	cout << "4. Menu principal" << endl;
 	cin >> op;
 
@@ -111,7 +133,7 @@ void menuEstadisticas()
 				break;
 				case 2:	descuentos();
 				break;
-				case 3: rangoEdad();
+				case 3: mediaEdad(users);
 				break;
 				case 4: main();
 				break;
@@ -139,7 +161,7 @@ void menuGestor()
 //	gestor.menuGestor();
 }
 
-void nuevoUsuario()
+void nuevoUsuario(std::vector<containers::Usuario> users)
 {
 	cout << "Nombre:" << endl;
 	string nombre;;
@@ -160,17 +182,34 @@ void nuevoUsuario()
 	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
-	do
+	if (dni.size()!= 9)
 	{
 		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
-	while (dni.size() !=9);
+//	do
+//	{
+//		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
+//		cin >> dni;
+//	}
+//	while (dni.size() !=8);
 
 	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
+
+
+	users.push_back(*us);
+
+	cout << "nombre del usuario: " << nomUsuario << endl;
 }
 
-void rangoEdad()
+void mediaEdad(std::vector<containers::Usuario> users)
 {
+	float media = 0;
 
+	for (int i = 0; i<users.size();i++)
+	{
+		media = +users[i].getEdad();
+	}
+
+	cout << "La media de edad de las personas que visitan C-ine es de: " << media << "años." << endl;
 }

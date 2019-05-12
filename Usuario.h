@@ -37,12 +37,11 @@ namespace containers
 				Usuario();
 				Usuario(string nombre, string apellido, string dni, string nomUs, int edad);
 
-				string getNombre();
-				string getApellido();
 				string getNombreUs();
-				string getDNI();
 				int getEdad();
 
+				void setNombreUs(string nombreUs);
+				void setEdad (int edad);
 	};
 //	{
 //		private:

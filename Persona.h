@@ -21,6 +21,15 @@ namespace persona
 		Persona (string nombre, string apellido, string dni);
 //		~Persona();
 
+		string getNombre();
+		string getApellido();
+		string getDNI();
+
+		void setNombre(string nombre);
+		void setApellido(string apellido);
+		void setDni(string dni);
+
+
 	};
 }
 
