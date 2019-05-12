@@ -23,6 +23,8 @@ void menuEstadisticas();
 void masTaquillera();
 void descuentos();
 void menuGestor();
+void rangoEdad();
+void nuevoUsuario();
 
 int main()
 {
@@ -48,7 +50,8 @@ int main()
 		cout << "1. Inicio Sesion" <<endl;
 		cout << "2. Estadisticas" <<endl;
 		cout << "3. Administrador" << endl;
-		cout <<"Introduzca una opción del 1-3:"<<endl;
+		cout << "4. Crear cuenta" << endl;
+		cout <<"Introduzca una opción del 1-4:"<<endl;
 		cout << "Pulse 'q' para salir"<<endl;
 		cin >> c;
 
@@ -63,6 +66,10 @@ int main()
 		else if (c == '3')
 		{
 			menuGestor();
+		}
+		else if (c == '4')
+		{
+			nuevoUsuario();
 		}
 
 	}while(c!='q');
@@ -83,7 +90,8 @@ void inicioSesion()
 		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
-	while (dni.size() !=8);
+	while (dni.size() !=9);
+
 }
 
 void menuEstadisticas()
@@ -92,7 +100,8 @@ void menuEstadisticas()
 	cout << "¿Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
 	cout << "2. ¡Echa un vistazo a los descuentos!" << endl;
-	cout << "3. Menu principal" << endl;
+	cout << "3. Rango de edad que mas visita nuestros cines" << endl;
+	cout << "4. Menu principal" << endl;
 	cin >> op;
 
 
@@ -102,7 +111,9 @@ void menuEstadisticas()
 				break;
 				case 2:	descuentos();
 				break;
-				case 3: main();
+				case 3: rangoEdad();
+				break;
+				case 4: main();
 				break;
 			}
 }
@@ -126,4 +137,40 @@ void menuGestor()
 {
 //	Gestor gestor = new Gestor();
 //	gestor.menuGestor();
+}
+
+void nuevoUsuario()
+{
+	cout << "Nombre:" << endl;
+	string nombre;;
+	cin >> nombre;
+
+	cout << "Apellido:" << endl;
+	string apellido;
+	cin >> apellido;
+
+	cout << "Edad:" << endl;
+	int edad;
+	cin >> edad;
+
+	cout << "Usuario:" << endl;
+	string nomUsuario;
+	cin >> nomUsuario;
+
+	cout << "Contrasenya (DNI):" << endl;
+	string dni;
+	cin >> dni;
+	do
+	{
+		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
+		cin >> dni;
+	}
+	while (dni.size() !=9);
+
+	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
+}
+
+void rangoEdad()
+{
+
 }

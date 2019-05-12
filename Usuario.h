@@ -32,10 +32,16 @@ namespace containers
 			private:
 				string nomUsuario;
 				string contra;
+				int edad;
 			public:
 				Usuario();
-				Usuario(string nombre, string apellido, string dni, string nomUs);
+				Usuario(string nombre, string apellido, string dni, string nomUs, int edad);
+
 				string getNombre();
+				string getApellido();
+				string getNombreUs();
+				string getDNI();
+				int getEdad();
 
 	};
 //	{
