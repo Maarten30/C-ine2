@@ -13,24 +13,17 @@
 #include "Gestor.h"
 #include "Cartelera.h"
 #include "Fichero.h"
+#include "main.h"
 using namespace std;
 using namespace containers;
 using namespace persona;
 using namespace cartelera;
 using namespace gestor;
 
-void verCartelera(char *cart);
-void inicioSesion(vector <Usuario> users);
-void menuEstadisticas(vector <Usuario> users);
-void masTaquillera();
-void descuentos();
-void menuGestor();
-void mediaEdad(vector <Usuario> users);
-void nuevoUsuario(vector <Usuario> &users);
 
 int main()
 {
-	char* cart = "Antiguo";
+	char* cart = "GML";
 
 	vector <Usuario> users;
 
@@ -51,6 +44,7 @@ int main()
 	char c;
 	do
 	{
+		cout << users.size() << endl;
 		cout<<endl;
 		cout << "MENU PRINCIPAL" <<endl;
 		cout << "-------------------"<<endl;
@@ -79,9 +73,9 @@ int main()
 	return 0;
 }
 
-void inicioSesion(vector <Usuario> users)
+void inicioSesion(vector <Usuario> &users)
 {
-	char* cart = "Antiguo";
+	char* cart = "GML";
 
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -98,11 +92,10 @@ void inicioSesion(vector <Usuario> users)
 		cin >> dni;
 	}
 
-<<<<<<< HEAD
+
 	if(tamanyo !=0)
-=======
+
 	for(Usuario a:users)
->>>>>>> 8cd4878c1daa4e87cff3a0f74c7912a413e524d0
 	{
 		cout<< "Hola "<< tamanyo << endl;
 
@@ -118,11 +111,15 @@ void inicioSesion(vector <Usuario> users)
 			else {
 
 				int op = 0;
-				cout << "Que estadisticas quieres consultar?" << endl;
-				cout << "1. Ver cartelera" << endl;
-				cout << "2. Pelicula mas taquillera" << endl;
-				cout << "3. Echa un vistazo a los descuentos!" << endl;
-				cout << "Pulse 'q' para cerrar sesion"<< endl;
+
+				a.imprimirMenu();
+
+				cin >> op;
+//				cout << "Que estadisticas quieres consultar?" << endl;
+//				cout << "1. Ver cartelera" << endl;
+//				cout << "2. Pelicula mas taquillera" << endl;
+//				cout << "3. Echa un vistazo a los descuentos!" << endl;
+//				cout << "Pulse 'q' para cerrar sesion"<< endl;
 
 				switch (op) {
 				case 1:
@@ -165,7 +162,7 @@ void verCartelera(char *cart)
 
 }
 
-void menuEstadisticas(std::vector<containers::Usuario> users)
+void menuEstadisticas(vector <Usuario> &users)
 {
 	int op=0;
 	cout << "Que estadisticas quieres consultar?" << endl;
@@ -259,6 +256,7 @@ void nuevoUsuario(vector <Usuario> &users)
 	users.push_back(*us);
 
 	cout<< users.size()<<endl;
+
 	for(Usuario a: users)
 	{
 		cout<<a.getNombre()<<endl;

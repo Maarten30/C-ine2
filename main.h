@@ -14,13 +14,14 @@ using namespace std;
 #define MAIN_H_
 
 
-void inicioSesion(vector <Usuario> users);
-void menuEstadisticas(vector <Usuario> users);
+void inicioSesion(vector <Usuario> &users);
+void menuEstadisticas(vector <Usuario> &users);
 void masTaquillera();
 void descuentos();
 void menuGestor();
 void mediaEdad(vector <Usuario> users);
-void nuevoUsuario(vector <Usuario> users);
+void nuevoUsuario(vector <Usuario> &users);
+void verCartelera(char *cart);
 
 
 #endif /* MAIN_H_ */

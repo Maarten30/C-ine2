@@ -53,7 +53,6 @@ Cartelera leerCartelera(char *cine)
 		fscanf(f, " %[^\t\n]s", buff);
 		buff2.clear();
 		buff2 = string(buff);
-		cout << "El titulo de la peli es: " << buff2 << endl;
 		//strcpy(cart.peliculas[i].titulo,buff);
 		pelis[i].setTitulo(buff2);
 
@@ -80,21 +79,14 @@ Cartelera leerCartelera(char *cine)
 			sesiones[j].setPlazas(plazas);
 			sesiones[j].setHora(hora);
 
-			cout << sesiones[j].getHora() << endl;
-			cout << sesiones[j].getPlazas() << endl;
+
 		}
 
 		pelis[i].setSesiones(sesiones);
-		cout << "La sesioncita es es: "<< pelis[i].sesiones[0].getHora() << endl;
+
 	}
 
-	cout << "El nombre de la peli 0 es: "<< pelis[0].getTitulo() << endl;
-
 	cart.peliculas = pelis;
-
-	cout << "El nombre de la peli22 0 es: "<< cart.peliculas[0].getTitulo() << endl;
-
-	cout << "La sesion es: "<< cart.peliculas[0].sesiones[0].getHora() << endl;
 
 	return cart;
 }
