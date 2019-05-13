@@ -15,33 +15,22 @@ using namespace persona;
 
 namespace containers
 {
-//	class Persona
-//	{
-//	private:
-//		string nombre, apellido, dni;
-//
-//	public:
-//		Persona();
-//		Persona (string nombre, string apellido, string dni);
-//		~Persona();
-//
-//	};
 
 	class Usuario: public Persona
 	{
-			private:
-				string nomUsuario;
-				string contra;
-				int edad;
-			public:
-				Usuario();
-				Usuario(string nombre, string apellido, string dni, string nomUs, int edad);
+		private:
+			string nomUsuario;
+			string contra;
+			int edad;
+		public:
+			Usuario();
+			Usuario(string nombre, string apellido, string dni, string nomUs, int edad);
+			virtual void imprimirMenu();
 
-				string getNombreUs();
-				int getEdad();
-
-				void setNombreUs(string nombreUs);
-				void setEdad (int edad);
+			string getNombreUs();
+			int getEdad();
+			void setNombreUs(string nombreUs);
+			void setEdad (int edad);
 	};
 //	{
 //		private:

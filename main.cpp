@@ -98,7 +98,11 @@ void inicioSesion(vector <Usuario> users)
 		cin >> dni;
 	}
 
+<<<<<<< HEAD
 	if(tamanyo !=0)
+=======
+	for(Usuario a:users)
+>>>>>>> 8cd4878c1daa4e87cff3a0f74c7912a413e524d0
 	{
 		cout<< "Hola "<< tamanyo << endl;
 

@@ -24,11 +24,36 @@ Persona:: Persona(string nombre, string apellido, string dni)
 	this->dni = dni;
 }
 
-//Persona::~Persona()
-//{
-//
-//}
+string Persona::getNombre()
+{
+	return this->nombre;
+}
 
+string Persona::getApellido()
+{
+	return this->apellido;
+}
 
+string Persona::getDNI()
+{
+	return this->dni;
+}
 
+void Persona::setNombre(string nombre)
+{
+	this ->nombre = nombre;
+}
 
+void Persona::setApellido(string apellido)
+{
+	this ->apellido = apellido;
+}
+
+void Persona::setDni(string dni)
+{
+	this ->dni = dni;
+}
+
+Persona::~Persona(){
+
+}
