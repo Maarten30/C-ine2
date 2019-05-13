@@ -8,7 +8,8 @@
 #include <iostream>
 #include <string>
 #include "Usuario.h"
-#include "main.h"
+
+#include "menu.h"
 using namespace std;
 using namespace containers;
 
