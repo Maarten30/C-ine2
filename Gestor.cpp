@@ -47,4 +47,3 @@ void Gestor::imprimirMenu()
 	cout << "Introduzca una opcion del 1-2:"<<endl;
 	cout << "Pulse 'q' para salir"<<endl;
 }
-
