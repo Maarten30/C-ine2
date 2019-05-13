@@ -17,13 +17,15 @@ namespace gestor
 {
 	class Gestor : public Persona
 	{
-	private:
-		int codigo;
-	public:
-		Gestor();
-		Gestor (string nombre, string apellido,string dni, int codigo);
-		void menuGestor();
-		void NuevaCartelera();
+		private:
+			int codigo;
+		public:
+			Gestor();
+			Gestor(string nombre, string apellido,string dni, int codigo);
+			virtual void imprimirMenu();
+
+			int getCodigo();
+			void setCodigo(int codigo);
 	};
 
 }

@@ -22,12 +22,13 @@ namespace persona
 
 			Persona();
 			Persona (string nombre, string apellido, string dni);
-	//		~Persona();
+			virtual ~Persona();
 
 			string getNombre();
 			string getApellido();
 			string getDNI();
 
+			virtual void imprimirMenu()=0;
 			void setNombre(string nombre);
 			void setApellido(string apellido);
 			void setDni(string dni);

@@ -97,12 +97,6 @@ void inicioSesion(vector <Usuario> users)
 		cout << "La contrasenya es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
-//	do
-//	{
-//		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
-//		cin >> dni;
-//	}
-//	while (dni.size() !=8);
 
 	for(Usuario a:users)
 	{

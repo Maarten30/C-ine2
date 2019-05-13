@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include "Usuario.h"
+#include "main.h"
 using namespace std;
 using namespace containers;
 
@@ -26,44 +27,14 @@ Usuario::Usuario(string nomUs, string nombre, string ape, string dni, int edad):
 
 }
 
-string Persona::getNombre()
-{
-	return this->nombre;
-}
-
-string Persona::getApellido()
-{
-	return this->apellido;
-}
-
 string Usuario::getNombreUs()
 {
 	return this->nomUsuario;
 }
 
-string Persona::getDNI()
-{
-	return this->dni;
-}
-
 int Usuario::getEdad()
 {
 	return this->edad;
-}
-
-void Persona::setNombre(string nombre)
-{
-	this ->nombre = nombre;
-}
-
-void Persona::setApellido(string apellido)
-{
-	this ->apellido = apellido;
-}
-
-void Persona::setDni(string dni)
-{
-	this ->dni = dni;
 }
 
 void Usuario :: setNombreUs(string nombreUs)
@@ -76,6 +47,16 @@ void Usuario :: setEdad(int edad)
 	this ->edad = edad;
 }
 
+void Usuario::imprimirMenu()
+{
 
+	cout<<endl;
+	cout << "MENU USUARIO" <<endl;
+	cout << "-------------------"<<endl;
+	cout << "1. Ver cartelera" <<endl;
+	cout << "2. Pelicula mas taquillera" <<endl;
+	cout << "3. Descuentos" << endl;
+	cout << "Introduzca una opcion del 1-3:"<<endl;
+	cout << "Pulse 'q' para salir"<<endl;
 
-
+}
