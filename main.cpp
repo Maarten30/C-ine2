@@ -19,13 +19,14 @@ using namespace persona;
 using namespace cartelera;
 using namespace gestor;
 
+void verCartelera(char *cart);
 void inicioSesion(vector <Usuario> users);
 void menuEstadisticas(vector <Usuario> users);
 void masTaquillera();
 void descuentos();
 void menuGestor();
 void mediaEdad(vector <Usuario> users);
-void nuevoUsuario(vector <Usuario> users);
+void nuevoUsuario(vector <Usuario> &users);
 
 int main()
 {
@@ -55,7 +56,8 @@ int main()
 		cout << "-------------------"<<endl;
 		cout << "1. Inicio sesion" <<endl;
 		cout << "2. Administrador" << endl;
-		cout << "Introduzca una opcion del 1-2:"<<endl;
+		cout<< "3. Registarse"<<endl;
+		cout << "Introduzca una opcion del 1-3:"<<endl;
 		cout << "Pulse 'q' para salir"<<endl;
 		cin >> c;
 
@@ -68,11 +70,7 @@ int main()
 			menuGestor();
 			menuEstadisticas(users);
 		}
-		else if (c == '3')
-		{
-
-		}
-		else if (c == '4')
+		else if(c=='3')
 		{
 			nuevoUsuario(users);
 		}
@@ -83,6 +81,8 @@ int main()
 
 void inicioSesion(vector <Usuario> users)
 {
+	char* cart = "Antiguo";
+
 	cout << "Usuario:" << endl;
 	string nomUsuario;
 	cin >> nomUsuario;
@@ -91,30 +91,73 @@ void inicioSesion(vector <Usuario> users)
 	string dni;
 	cin >> dni;
 
+	int tamanyo = users.size();
 	if (dni.size()!= 9)
 	{
 		cout << "La contrasenya es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
-//	do
-//	{
-//		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
-//		cin >> dni;
-//	}
-//	while (dni.size() !=8);
 
-	for(Usuario a:users)
+	if(tamanyo !=0)
 	{
-		if (!(nomUsuario.compare(a.getNombreUs()) && dni.compare(a.getDNI())))
+		cout<< "Hola "<< tamanyo << endl;
+
+		for (Usuario a: users)
 		{
-			cout << "La contrasenya o nombre de usuario insertados no existen, registrese para poder acceder " << endl;
-			main();
+			cout<< "Holaaaa" << endl;
+
+			if (nomUsuario.compare(a.getNombreUs())!=0 && dni.compare(a.getDNI())!=0)
+			{
+				cout << "La contrasenya o nombre de usuario insertados no existen, registrese para poder acceder " << endl;
+				main();
+			}
+			else {
+
+				int op = 0;
+				cout << "Que estadisticas quieres consultar?" << endl;
+				cout << "1. Ver cartelera" << endl;
+				cout << "2. Pelicula mas taquillera" << endl;
+				cout << "3. Echa un vistazo a los descuentos!" << endl;
+				cout << "Pulse 'q' para cerrar sesion"<< endl;
+
+				switch (op) {
+				case 1:
+					verCartelera(cart);
+					break;
+				case 2:
+					masTaquillera();
+					break;
+				case 3:
+					descuentos();
+					break;
+				case 4:
+					main();
+					break;
+				}
+
+			}
 		}
-		else
-		{
-			cout << "Se ha registrado satisfactoriamente " << a.getNombre()<<endl;
-		}
+
 	}
+	else
+	{
+		cout << "No hay nadie registrado" << endl;
+		cout<<"Registrarse: "<<endl;
+		nuevoUsuario(users);
+	}
+
+}
+
+void verCartelera(char *cart)
+{
+	 Cartelera cartelera = leerCartelera(cart);
+
+	 for(int a=0; a<cartelera.getNumPelis(); a++)
+	 {
+		 cout<<"Pelicula "<< a << ": " <<cartelera.peliculas[a].getTitulo()<<endl;
+		 cout<<endl;
+	 }
+
 
 }
 
@@ -151,11 +194,27 @@ void masTaquillera() //leer el fichero y coger la pelicula que mas entradas haya
 
 void descuentos()
 {
-	Cartelera *cart = new Cartelera();
-	cout<<"Descuentos de este mes:"<<endl;
+	char dia;
+	cout<<"Que dia de la semana quieres ir al cine?"<<endl;
+	cout<<"Lunes (L)"<<endl;
+	cout<<"Martes (M)"<<endl;
+	cout<<"Miercoles (X)"<<endl;
+	cout<<"Jueves (J)"<<endl;
+	cout<<"Viernes (V)"<<endl;
+	cout<<"Sabado (S)"<<endl;
+	cout<<"Domingo (D)"<<endl;
+	cin>>dia;
 
-	cout<<"Introduzca el cine: "<<endl;
-//	cin >> cart->cine;
+	if(dia=='X' || dia=='x')
+	{
+		cout<<"Tienes un descuento del 50% en todas las peliculas"<<endl;
+	}
+
+	else
+	{
+		cout<<"Lo sentimos, hoy no hay descuentos"<<endl;
+	}
+
 }
 void menuGestor()
 {
@@ -163,7 +222,7 @@ void menuGestor()
 //	gestor.menuGestor();
 }
 
-void nuevoUsuario(vector <Usuario> users)
+void nuevoUsuario(vector <Usuario> &users)
 {
 	cout << "Nombre:" << endl;
 	string nombre;;
@@ -184,22 +243,22 @@ void nuevoUsuario(vector <Usuario> users)
 	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
+
 	if (dni.size()!= 9)
 	{
 		cout << "La contrasenya es su DNI, vuelva a introducirla por favor: " << endl;
 		cin >> dni;
 	}
-//	do
-//	{
-//		cout << "La contrasena es su DNI, vuelva a introducirla por favor: " << endl;
-//		cin >> dni;
-//	}
-//	while (dni.size() !=8);
 
 	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
 
-
 	users.push_back(*us);
+
+	cout<< users.size()<<endl;
+	for(Usuario a: users)
+	{
+		cout<<a.getNombre()<<endl;
+	}
 
 //	cout << "nombre del usuario: " << nomUsuario << endl;
 	cout<<"Bienvenid@ "<< us->getNombre()<<"!"<<endl;
@@ -208,11 +267,12 @@ void nuevoUsuario(vector <Usuario> users)
 void mediaEdad(vector <Usuario> users)
 {
 	float media = 0;
+	int tamanyo = sizeof(users);
 
-	for (int i = 0; i<users.size();i++)
+	for (int i = 0; i<tamanyo;i++)
 	{
 		media = +users[i].getEdad();
 	}
 
-	cout << "La media de edad de las personas que visitan C-ine es de: " << media << "anyos." << endl;
+	cout << "La media de edad de las personas que visitan C-ine es de: " << media/tamanyo << "anyos." << endl;
 }
