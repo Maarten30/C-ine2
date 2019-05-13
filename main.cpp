@@ -29,7 +29,7 @@ void nuevoUsuario(vector <Usuario> users);
 
 int main()
 {
-	char* cart = "GML";
+	char* cart = "Antiguo";
 
 	vector <Usuario> users;
 
@@ -54,10 +54,8 @@ int main()
 		cout << "MENU PRINCIPAL" <<endl;
 		cout << "-------------------"<<endl;
 		cout << "1. Inicio sesion" <<endl;
-		cout << "2. Estadisticas" <<endl;
-		cout << "3. Administrador" << endl;
-		cout << "4. Crear cuenta" << endl;
-		cout << "Introduzca una opcion del 1-4:"<<endl;
+		cout << "2. Administrador" << endl;
+		cout << "Introduzca una opcion del 1-2:"<<endl;
 		cout << "Pulse 'q' para salir"<<endl;
 		cin >> c;
 
@@ -67,11 +65,12 @@ int main()
 		}
 		else if (c == '2')
 		{
+			menuGestor();
 			menuEstadisticas(users);
 		}
 		else if (c == '3')
 		{
-			menuGestor();
+
 		}
 		else if (c == '4')
 		{
