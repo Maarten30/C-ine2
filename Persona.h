@@ -15,19 +15,22 @@ namespace persona
 {
 	class Persona
 	{
-	public:
-		string nombre, apellido, dni;
-		Persona();
-		Persona (string nombre, string apellido, string dni);
-//		~Persona();
+		private:
+			string nombre, apellido, dni;
 
-		string getNombre();
-		string getApellido();
-		string getDNI();
+		public:
 
-		void setNombre(string nombre);
-		void setApellido(string apellido);
-		void setDni(string dni);
+			Persona();
+			Persona (string nombre, string apellido, string dni);
+	//		~Persona();
+
+			string getNombre();
+			string getApellido();
+			string getDNI();
+
+			void setNombre(string nombre);
+			void setApellido(string apellido);
+			void setDni(string dni);
 
 
 	};

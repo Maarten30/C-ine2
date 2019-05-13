@@ -11,21 +11,16 @@
 using namespace std;
 using namespace containers;
 
-Usuario::Usuario()
+Usuario::Usuario():Persona()
 {
 	this->nomUsuario = "";
-	this->nombre = "";
-	this->apellido = "";
 	this -> edad = 0;
 
 }
 
-Usuario::Usuario(string nomUs, string nombre, string ape, string dni, int edad)
+Usuario::Usuario(string nomUs, string nombre, string ape, string dni, int edad):Persona(nombre,ape,dni)
 {
 
-	this->nombre = nombre;
-	this->apellido = ape;
-	this->dni = dni;
 	this->nomUsuario = nomUs;
 	this->edad = edad;
 

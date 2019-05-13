@@ -19,18 +19,19 @@ using namespace persona;
 using namespace cartelera;
 using namespace gestor;
 
-void inicioSesion(std::vector<containers::Usuario> users);
-void menuEstadisticas(std::vector<containers::Usuario> users);
+void inicioSesion(vector <Usuario> users);
+void menuEstadisticas(vector <Usuario> users);
 void masTaquillera();
 void descuentos();
 void menuGestor();
-void mediaEdad(std::vector<containers::Usuario> users);
-void nuevoUsuario(std::vector<containers::Usuario> users);
+void mediaEdad(vector <Usuario> users);
+void nuevoUsuario(vector <Usuario> users);
 
 int main()
 {
 	char* cart = "GML";
-	std::vector<containers::Usuario> users;
+
+	vector <Usuario> users;
 
 
 	Cartelera cartel = leerCartelera(cart);
@@ -51,12 +52,12 @@ int main()
 	{
 		cout<<endl;
 		cout << "MENU PRINCIPAL" <<endl;
-		cout<<"-------------------"<<endl;
+		cout << "-------------------"<<endl;
 		cout << "1. Inicio sesion" <<endl;
 		cout << "2. Estadisticas" <<endl;
 		cout << "3. Administrador" << endl;
 		cout << "4. Crear cuenta" << endl;
-		cout <<"Introduzca una opcion del 1-4:"<<endl;
+		cout << "Introduzca una opcion del 1-4:"<<endl;
 		cout << "Pulse 'q' para salir"<<endl;
 		cin >> c;
 
@@ -81,7 +82,7 @@ int main()
 	return 0;
 }
 
-void inicioSesion(std::vector<containers::Usuario> users)
+void inicioSesion(vector <Usuario> users)
 {
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -103,7 +104,7 @@ void inicioSesion(std::vector<containers::Usuario> users)
 //	}
 //	while (dni.size() !=8);
 
-	for (Usuario a : users)
+	for(Usuario a:users)
 	{
 		if (!(nomUsuario.compare(a.getNombreUs()) && dni.compare(a.getDNI())))
 		{
@@ -163,7 +164,7 @@ void menuGestor()
 //	gestor.menuGestor();
 }
 
-void nuevoUsuario(std::vector<containers::Usuario> users)
+void nuevoUsuario(vector <Usuario> users)
 {
 	cout << "Nombre:" << endl;
 	string nombre;;
@@ -205,7 +206,7 @@ void nuevoUsuario(std::vector<containers::Usuario> users)
 	cout<<"Bienvenid@ "<< us->getNombre()<<"!"<<endl;
 }
 
-void mediaEdad(std::vector<containers::Usuario> users)
+void mediaEdad(vector <Usuario> users)
 {
 	float media = 0;
 

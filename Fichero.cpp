@@ -31,7 +31,7 @@ Cartelera leerCartelera(char *cine)
 	numPelis = (lineasFichero(fichero)-1)/3;
 	cart.setNumPelis(numPelis);
 
-	Pelicula pelis[numPelis];
+	Pelicula *pelis = new Pelicula[numPelis];
 
 	//cart.peliculas = malloc(sizeof(Pelicula)*numPelis);
 
@@ -70,7 +70,7 @@ Cartelera leerCartelera(char *cine)
 		pelis[i].setNumSesiones(numSesiones);
 
 		//cart.peliculas[i].sesiones = (Sesion*)malloc (sizeof(Sesion)*numSesiones);
-		Sesion sesiones[numSesiones];
+		Sesion *sesiones= new Sesion[numSesiones];
 
 		for(int j=0; j<numSesiones;j++)
 		{
