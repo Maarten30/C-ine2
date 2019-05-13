@@ -16,7 +16,7 @@ using namespace std;
 
 void inicioSesion(vector <Usuario> &users);
 void menuEstadisticas(vector <Usuario> &users);
-void masTaquillera();
+void masTaquillera(char *cart);
 void descuentos();
 void menuGestor();
 void mediaEdad(vector <Usuario> users);

@@ -23,28 +23,20 @@ using namespace gestor;
 
 int main()
 {
-	char* cart = "GML";
+	char* cart = "Antiguo";
 
 	vector <Usuario> users;
 
-
 	Cartelera cartel = leerCartelera(cart);
 
-	cout << "E nombre de la peli es: "<< cartel.peliculas[0].getTitulo() << endl;
-	cout << "La descripciond de la peli es: "<< cartel.peliculas[0].getDesc() << endl;
-	cout << "Las plazas disponibles son: "<< cartel.peliculas[0].sesiones[0].getPlazas() << endl;
-	cout << "Las hora es: "<< cartel.peliculas[0].sesiones[0].getHora() << endl;
-
-//	Usuario *us;
-//
-//	us = new Usuario("mahandy", "Maarten", "Handels", "72557736G");
-//
-//	cout << us->getNombre() << endl;
+//	cout << "E nombre de la peli es: "<< cartel.peliculas[0].getTitulo() << endl;
+//	cout << "La descripciond de la peli es: "<< cartel.peliculas[0].getDesc() << endl;
+//	cout << "Las plazas disponibles son: "<< cartel.peliculas[0].sesiones[0].getPlazas() << endl;
+//	cout << "Las hora es: "<< cartel.peliculas[0].sesiones[0].getHora() << endl;
 
 	char c;
 	do
 	{
-		cout << users.size() << endl;
 		cout<<endl;
 		cout << "MENU PRINCIPAL" <<endl;
 		cout << "-------------------"<<endl;
@@ -69,13 +61,14 @@ int main()
 			nuevoUsuario(users);
 		}
 
-	}while(c!='q');
+	}
+	while(c!='q');
 	return 0;
 }
 
 void inicioSesion(vector <Usuario> &users)
 {
-	char* cart = "GML";
+	char* cart = "Antiguo";
 
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -92,16 +85,12 @@ void inicioSesion(vector <Usuario> &users)
 		cin >> dni;
 	}
 
-
 	if(tamanyo !=0)
 
 	for(Usuario a:users)
 	{
-		cout<< "Hola "<< tamanyo << endl;
-
 		for (Usuario a: users)
 		{
-			cout<< "Holaaaa" << endl;
 
 			if (nomUsuario.compare(a.getNombreUs())!=0 && dni.compare(a.getDNI())!=0)
 			{
@@ -115,18 +104,13 @@ void inicioSesion(vector <Usuario> &users)
 				a.imprimirMenu();
 
 				cin >> op;
-//				cout << "Que estadisticas quieres consultar?" << endl;
-//				cout << "1. Ver cartelera" << endl;
-//				cout << "2. Pelicula mas taquillera" << endl;
-//				cout << "3. Echa un vistazo a los descuentos!" << endl;
-//				cout << "Pulse 'q' para cerrar sesion"<< endl;
 
 				switch (op) {
 				case 1:
 					verCartelera(cart);
 					break;
 				case 2:
-					masTaquillera();
+					masTaquillera(cart);
 					break;
 				case 3:
 					descuentos();
@@ -143,27 +127,45 @@ void inicioSesion(vector <Usuario> &users)
 	else
 	{
 		cout << "No hay nadie registrado" << endl;
-		cout<<"Registrarse: "<<endl;
+		cout<<endl;
+		cout<<"REGISTRO"<<endl;
+		cout<<"------------"<<endl;
 		nuevoUsuario(users);
 	}
-
 }
 
 void verCartelera(char *cart)
 {
 	 Cartelera cartelera = leerCartelera(cart);
+	 Usuario us;
+	 int op=0;
 
+	 cout<<"PELICULAS"<<endl;
+	 cout<<"------------"<<endl;
 	 for(int a=0; a<cartelera.getNumPelis(); a++)
 	 {
-		 cout<<"Pelicula "<< a << ": " <<cartelera.peliculas[a].getTitulo()<<endl;
-		 cout<<endl;
+		 cout<<"Pelicula "<< a+1 << ": " <<cartelera.peliculas[a].getTitulo()<<endl;
 	 }
 
+	 cout<<endl;
+	 cout<<"1. Menu usuario"<<endl;
+	 cout<<"2. Menu principal"<<endl;
+	 cin>>op;
 
+	switch (op) {
+	case 1:
+		us.imprimirMenu();
+		break;
+	case 2:
+		main();
+		break;
+	}
 }
 
 void menuEstadisticas(vector <Usuario> &users)
 {
+	char* cart = "Antiguo";
+
 	int op=0;
 	cout << "Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
@@ -172,31 +174,50 @@ void menuEstadisticas(vector <Usuario> &users)
 	cout << "4. Menu principal" << endl;
 	cin >> op;
 
-
-	switch (op)
-			{
-				case 1: masTaquillera();
-				break;
-				case 2:	descuentos();
-				break;
-				case 3: mediaEdad(users);
-				break;
-				case 4: main();
-				break;
-			}
+	switch (op) {
+	case 1:
+		masTaquillera(cart);
+		break;
+	case 2:
+		descuentos();
+		break;
+	case 3:
+		mediaEdad(users);
+		break;
+	case 4:
+		main();
+		break;
+	}
 }
-void masTaquillera() //leer el fichero y coger la pelicula que mas entradas haya vendido
+
+void masTaquillera(char *cart) //leer el fichero y coger la pelicula que mas entradas haya vendido
 {
 	Pelicula peli;
-	cout << "La pelicula mas taquillera es: " << peli.getTitulo() << endl;
-	main();
+	Cartelera cartelera = leerCartelera(cart);
+	int mayor = cartelera.peliculas[0].sesiones[0].getPlazas();
 
+	for(int i=0; i<cartelera.getNumPelis(); i++)
+	{
+		for(int j=0; j<i; j++)
+		{
+			if(cartelera.peliculas[i].sesiones[j].getPlazas()<mayor)
+			{
+				mayor = cartelera.peliculas[i].sesiones[j].getPlazas();
+			}
+			cout<<mayor<<endl;
+			cout<<cartelera.peliculas[i].getTitulo()<<endl;
+		}
+	}
+	main();
 }
 
 void descuentos()
 {
 	char dia;
+	cout<<"DESCUENTOS"<<endl;
+	cout<<"------------"<<endl;
 	cout<<"Que dia de la semana quieres ir al cine?"<<endl;
+	cout<<endl;
 	cout<<"Lunes (L)"<<endl;
 	cout<<"Martes (M)"<<endl;
 	cout<<"Miercoles (X)"<<endl;
@@ -247,7 +268,7 @@ void nuevoUsuario(vector <Usuario> &users)
 
 	if (dni.size()!= 9)
 	{
-		cout << "La contrasenya es su DNI, vuelva a introducirla por favor: " << endl;
+		cout << "La contrasenya es su DNI, vuelva a introducirlo por favor: " << endl;
 		cin >> dni;
 	}
 
@@ -255,15 +276,8 @@ void nuevoUsuario(vector <Usuario> &users)
 
 	users.push_back(*us);
 
-	cout<< users.size()<<endl;
-
-	for(Usuario a: users)
-	{
-		cout<<a.getNombre()<<endl;
-	}
-
-//	cout << "nombre del usuario: " << nomUsuario << endl;
-	cout<<"Bienvenid@ "<< us->getNombre()<<"!"<<endl;
+	cout<<endl;
+	cout<<"BIENVENID@ "<< us->getNombre()<<"!!"<<endl;
 }
 
 void mediaEdad(vector <Usuario> users)
