@@ -256,19 +256,40 @@ void Menu::nuevoUsuario()
 	int edad;
 	cin >> edad;
 
-	cout << "Usuario:" << endl;
+	string dni;
 	string nomUsuario;
+
+
+	cout << "Usuario:" << endl;
 	cin >> nomUsuario;
 
-	cout << "DNI (Contraseña):" << endl;
-	string dni;
+
+	for (Usuario a: users)
+	{
+		if(a.getNombreUs().compare(nomUsuario)==0)
+		{
+			cout << "Este nombre de usuario ya existe, introduzca uno nuevo: " << endl;
+			cin >> nomUsuario;
+		}
+	}
+
+	cout << "DNI (Contrasenya):" << endl;
 	cin >> dni;
 
-	while(dni.size()!= 9)
+	for (Usuario a: users)
 	{
-		cout << "La contrasenya es su DNI, vuelva a introducirlo por favor: " << endl;
+		if(a.getDNI().compare(dni) == 0)
+		{
+			cout << "Este dni ya existe, introduzca uno nuevo: " << endl;
+			cin >> dni;
+		}
+	}
+	if(dni.size()!= 9)
+	{
+		cout << "Recuerde que el dni tiene que tener 9 caracteres: " << endl;
 		cin >> dni;
 	}
+
 
 	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
 
@@ -278,7 +299,7 @@ void Menu::nuevoUsuario()
 
 	GuardarUsuarios(users);
 
-	cout<<"BIENVENID@ "<< us->getNombre()<<"!!"<<endl;
+	cout<<"BIENVENIDO/A "<< us->getNombre()<<"!!"<<endl;
 }
 
 void Menu::nuevoGestor()
@@ -451,95 +472,6 @@ void Menu::descuentos()
 	{
 		cout<<"Lo sentimos, hoy no hay descuentos"<<endl;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
