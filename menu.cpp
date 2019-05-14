@@ -119,20 +119,19 @@ void Menu::menuGestor()
 
 void Menu::inicioSesion()
 {
-	char* cart = "ANTIGUO";
+	char* cart = "GML";
 	Usuario* us = new Usuario();
 
 	cout << "Usuario:" << endl;
 	string nomUsuario;
 	cin >> nomUsuario;
 
+
 	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
 
-	bool  repetido;
-
-	repetido = false;
+	bool  repetido = false;
 
 	while (dni.size()!= 9)
 	{
@@ -168,6 +167,7 @@ void Menu::inicioSesion()
 					descuentos();
 					break;
 			}
+
 			if(repetido == true)
 			{
 				int op;
@@ -198,6 +198,11 @@ void Menu::inicioSesion()
 
 		}
 
+
+	}
+	if (repetido == false)
+	{
+		cout << "No hay ningun usuario registrado con ese nombre de usuario y contrasenya"<<endl;
 	}
 }
 
