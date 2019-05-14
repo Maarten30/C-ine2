@@ -58,6 +58,6 @@ void Usuario::imprimirMenu()
 	cout << "2. Pelicula mas taquillera" <<endl;
 	cout << "3. Descuentos" << endl;
 	cout << "Introduzca una opcion del 1-3:"<<endl;
-	cout << "Pulse 'q' para salir"<<endl;
+	cout << "Pulse '4' para salir"<<endl;
 
 }

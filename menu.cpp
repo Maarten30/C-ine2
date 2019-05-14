@@ -63,7 +63,7 @@ void Menu::MenuPrincipal()
 	char c;
 	do
 	{
-		cout << "Tamaño users" << users.size() << endl;
+		cout << "Tamanyoo users" << users.size() << endl;
 		cout << endl;
 		cout << "MENU PRINCIPAL" << endl;
 		cout << "-------------------" << endl;
@@ -119,7 +119,8 @@ void Menu::menuGestor()
 
 void Menu::inicioSesion()
 {
-	char* cart = "GML";
+	char* cart = "ANTIGUO";
+	Usuario* us = new Usuario();
 
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -128,6 +129,10 @@ void Menu::inicioSesion()
 	cout << "Contrasenya (DNI):" << endl;
 	string dni;
 	cin >> dni;
+
+	bool  repetido;
+
+	repetido = false;
 
 	while (dni.size()!= 9)
 	{
@@ -143,6 +148,8 @@ void Menu::inicioSesion()
 		if (nomUsuario.compare(a.getNombreUs())==0 && dni.compare(a.getDNI())==0)
 		{
 			cout << "Y aqui tambn " << endl;
+			repetido = true;
+			*us = a;
 
 			int op = 0;
 			a.imprimirMenu();
@@ -161,12 +168,34 @@ void Menu::inicioSesion()
 					descuentos();
 					break;
 			}
+			if(repetido == true)
+			{
+				int op;
+
+					do
+					{
+						cout << "entra en dowhilee"<<endl;
+						op = 0;
+						us ->imprimirMenu();
+						cin >> op;
+
+						switch(op)
+						{
+						case 1:
+							verCartelera(cart);
+							break;
+						case 2:
+							masTaquillera(cart);
+							break;
+						case 3:
+							descuentos();
+							break;
+						}
 
 
-		}
-		else
-		{
-			cout << " Asegurese de meter un usuario y contrasenya validos o registrese " << endl;
+					}while (op!=4);
+			}
+
 		}
 
 	}
