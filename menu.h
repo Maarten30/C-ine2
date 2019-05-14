@@ -43,7 +43,7 @@ namespace menu
 				void nuevoUsuario();
 				void nuevoGestor();
 				void verCartelera(char *cart);
-
+				int exists(const char *fname);
 	};
 }
 

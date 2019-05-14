@@ -14,6 +14,7 @@
 #include "Gestor.h"
 #include "Cartelera.h"
 #include "Fichero.h"
+#include<locale>
 using namespace std;
 using namespace containers;
 using namespace persona;
@@ -210,43 +211,46 @@ void Menu::inicioSesionGestor()
 {
 	char* cart = "GML";
 
-	int codigo;
+	char codigo[20];
+	int codigo2;
 	string dni;
 	bool existente;
 	Gestor* ges = new Gestor();
 
-	do
-	{
+	do {
 		existente = false;
 		cout << "Codigo Gestor:" << endl;
 		cin >> codigo;
+		codigo2 = atoi(codigo);
 
-		cout << "Contrasenya (DNI):" << endl;
-		cin >> dni;
+		if (codigo2 != 0) {
+			cout << "Contrasenya (DNI):" << endl;
+			cin >> dni;
 
-		for(Gestor a:gestores)
-		{
+			for (Gestor a : gestores) {
+				if (a.getCodigo() == codigo2 && a.getDNI().compare(dni) == 0) {
+					cout << "Se encuentra la coincidencia" << endl;
+					existente = true;
+					*ges = a;
+				}
 
-			if(a.getCodigo()==codigo && a.getDNI().compare(dni)==0)
-			{
-				cout << "Se encuentra la coincidencia" << endl;
-				existente = true;
-				*ges = a;
+				cout << "Sale de la comprobacion" << endl;
 			}
-
-			cout << "Sale de la comprobacion" << endl;
-		}
-		if(existente == false)
-		{
-			cout << "Los datos introducidos no coinciden con ningun gestor existente " <<endl;
+			if (existente == false) {
+				cout<< "Los datos introducidos no coinciden con ningun gestor existente "<< endl;
+			}
 		}
 
-	}while(existente==false);
+		else{
+			cout<<"Error, tienes que introducir un numero, vuelve a intentarlo"<<endl;
+			this->menuGestor();
+		}
+
+	} while (existente == false);
 
 
 	if(existente == true)
 	{
-
 		cout << "Entra en el if del boolean" << endl;
 		int op;
 
@@ -273,8 +277,6 @@ void Menu::inicioSesionGestor()
 	}
 
 }
-
-
 
 void Menu::nuevoUsuario()
 {
@@ -324,12 +326,9 @@ void Menu::nuevoUsuario()
 		cin >> dni;
 	}
 
-
 	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
 
-
 	this->AnyadirUsuario(us);
-
 
 	GuardarUsuarios(users);
 
@@ -373,9 +372,6 @@ void Menu::nuevoGestor()
 	}while(dni.size()!= 9 || repetido == true);
 
 	int codigo = gestores.size() + 1;
-
-
-
 
 	Gestor* ges = new Gestor(nombre, apellido, dni, codigo);
 	this->AnyadirGestor(ges);
@@ -432,38 +428,49 @@ void Menu::verCartelera(char *cart)
 
 void Menu::masTaquillera(char *cart) //leer el fichero y coger la pelicula que mas entradas haya vendido
 {
-	cout << "Llega aqui" << endl;
-	Pelicula peli;
-	Cartelera cartelera = leerCartelera(cart);
-	int mayor = cartelera.peliculas[0].sesiones[0].getPlazas();
+//	cout << "Elige el cine al que quieres ir:" << endl;
+//	cin>>cart;
+//	strcat(cart, "Cartelera.txt");
+//	int existe = exists(cart);
+//	if (existe ==0)
+//	{
+//		cout<<"Este cine no existe"<<endl;
+//		MenuPrincipal();
+//	}
 
-	int mayorVisitas = 0;
+//	else
+//	{
+		Pelicula peli;
+		Cartelera cartelera = leerCartelera(cart);
+		int mayor = cartelera.peliculas[0].sesiones[0].getPlazas();
+
+		int mayorVisitas = 0;
 
 
-	for(int i=0; i<cartelera.getNumPelis(); i++)
-	{
-		int suma = 0;
-		for(int j=0; j<cartelera.peliculas[i].getNumSesiones(); j++)
+		for(int i=0; i<cartelera.getNumPelis(); i++)
 		{
-			int aux = 22-cartelera.peliculas[i].sesiones[j].getPlazas();
-			suma += aux;
-		}
-		if(i==0)
-		{
-			peli = cartelera.peliculas[i];
-			mayorVisitas = suma;
-		}else
-		{
-			if(suma>mayorVisitas)
+			int suma = 0;
+			for(int j=0; j<cartelera.peliculas[i].getNumSesiones(); j++)
+			{
+				int aux = 22-cartelera.peliculas[i].sesiones[j].getPlazas();
+				suma += aux;
+			}
+			if(i==0)
 			{
 				peli = cartelera.peliculas[i];
+				mayorVisitas = suma;
+			}else
+			{
+				if(suma>mayorVisitas)
+				{
+					peli = cartelera.peliculas[i];
+				}
 			}
 		}
+
+		cout << "La peli más taquillera es: " << peli.getTitulo() << endl;
 	}
-
-	cout << "La peli más taquillera es: " << peli.getTitulo() << endl;
-
-}
+//}
 
 void Menu::mediaEdad()
 {
@@ -508,4 +515,14 @@ void Menu::descuentos()
 	}
 }
 
+int exists(const char *fname)
+{
+    FILE *file;
+    if ((file = fopen(fname, "r")))
+    {
+        fclose(file);
+        return 1;
+    }
+    return 0;
+}
 
