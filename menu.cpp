@@ -164,6 +164,11 @@ void Menu::inicioSesion()
 
 
 		}
+		else
+		{
+			cout << " Asegurese de meter un usuario y contrasenya validos o registrese " << endl;
+		}
+
 	}
 }
 
@@ -446,6 +451,94 @@ void Menu::descuentos()
 	{
 		cout<<"Lo sentimos, hoy no hay descuentos"<<endl;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
