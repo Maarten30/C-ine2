@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <fstream>
 #include "Cartelera.h"
 #include "Fichero.h"
 #include "Usuario.h"
@@ -229,6 +230,12 @@ vector<Usuario> leerUsuarios()
 	//cart.peliculas = pelis;
 
 	return users;
+}
+
+bool fexists(const char *filename)
+{
+	std::ifstream ifile(filename);
+  return (bool)ifile;
 }
 
 int lineasFichero(char *fichero)

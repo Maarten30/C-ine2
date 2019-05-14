@@ -18,5 +18,6 @@ int lineasFichero(char *fichero);
 Cartelera leerCartelera(char *cine);
 void GuardarUsuarios(vector <Usuario> users);
 vector<Usuario> leerUsuarios();
+bool fexists(const char *filename);
 
 #endif /* FICHERO_H_ */

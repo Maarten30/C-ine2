@@ -41,10 +41,14 @@ void Menu::MenuPrincipal()
 {
 
 	cout << "Hola" << endl;
-	vector <Usuario> users = leerUsuarios();
-
-
-	cout << "El nombre del primer usuario es: " << users[0].getNombre() << endl;
+//	if(fexists("USUARIOS") == true)
+//	{
+//		cout << "Entra en el if" << endl;
+//		//this->users = leerUsuarios();
+//
+//		//cout << this->users[0].getNombre() << endl;
+//
+//	}
 
 
 	char c;
@@ -80,7 +84,7 @@ void Menu::MenuPrincipal()
 
 void Menu::inicioSesion()//vector <Usuario> &users)
 {
-	char* cart = "URBIL";
+	char* cart = "ANTIGUO";
 
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -97,12 +101,14 @@ void Menu::inicioSesion()//vector <Usuario> &users)
 		cin >> dni;
 	}
 
-
-	for (Usuario a: this->users)
+	cout << "LLega aquiiiiiiiiiii " << endl;
+	for (Usuario a: users)
 	{
+		cout << "Entra acaaaaa " << endl;
 
-		if (nomUsuario.compare(a.getNombreUs())!=1 && dni.compare(a.getDNI())!=1)
+		if (nomUsuario.compare(a.getNombreUs())==0 && dni.compare(a.getDNI())==0)
 		{
+			cout << "Y aqui tambn " << endl;
 			int op = 0;
 
 			a.imprimirMenu();
@@ -145,7 +151,7 @@ void Menu::verCartelera(char *cart)
 
 void Menu::menuEstadisticas()
 {
-	char* cart = "URBIL";
+	char* cart = "ANTIGUO";
 
 	int op=0;
 	cout << "Que estadisticas quieres consultar?" << endl;

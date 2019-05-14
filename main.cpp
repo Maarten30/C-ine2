@@ -25,8 +25,25 @@ using namespace menu;
 int main()
 {
 
-	vector <Usuario> users = leerUsuarios();
+//	vector <Usuario> users;
+
+	cout << "Main" << endl;
+//	if(fexists("USUARIOS") == true)
+//	{
+//		cout << "Entra en el if" << endl;
+		vector <Usuario> users = leerUsuarios();
+
+
+//	}else
+//	{
+//		cout << "funciona" << endl;
+//	}
+
+	cout << "EN el main el nomUs es " << users[0].getNombreUs() << endl;
+
 	Menu* menucito = new Menu(users);
+
+	cout << "Se crea en menucito" << endl;
 
 	menucito->MenuPrincipal();
 
