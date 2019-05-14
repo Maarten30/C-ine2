@@ -268,11 +268,11 @@ void Menu::nuevoUsuario()
 	string dni;
 	cin >> dni;
 
-	do
+	while(dni.size()!= 9)
 	{
 		cout << "La contrasenya es su DNI, vuelva a introducirlo por favor: " << endl;
 		cin >> dni;
-	}while(dni.size()!= 9);
+	}
 
 	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
 
