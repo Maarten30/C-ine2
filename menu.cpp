@@ -84,7 +84,7 @@ void Menu::MenuPrincipal()
 
 void Menu::inicioSesion()//vector <Usuario> &users)
 {
-	char* cart = "ANTIGUO";
+	char* cart = "GML";
 
 	cout << "Usuario:" << endl;
 	string nomUsuario;
@@ -151,7 +151,7 @@ void Menu::verCartelera(char *cart)
 
 void Menu::menuEstadisticas()
 {
-	char* cart = "ANTIGUO";
+	char* cart = "GML";
 
 	int op=0;
 	cout << "Que estadisticas quieres consultar?" << endl;
