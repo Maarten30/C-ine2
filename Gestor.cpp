@@ -40,10 +40,10 @@ void Gestor::setCodigo(int codigo)
 void Gestor::imprimirMenu()
 {
 	cout<<endl;
-	cout << "MENU GESTOR" <<endl;
+	cout << "MENU GESTOR: " << this->getNombre() <<endl;
 	cout << "-------------------"<<endl;
 	cout << "1. Media de edad" <<endl;
 	cout << "2. Pelicula mas taquillera" <<endl;
 	cout << "Introduzca una opcion del 1-2:"<<endl;
-	cout << "Pulse 'q' para salir"<<endl;
+	cout << "Pulse '3' para salir"<<endl;
 }

@@ -21,14 +21,26 @@ using namespace cartelera;
 using namespace gestor;
 using namespace menu;
 
+/**
+ * Constructor vacío
+ */
 Menu::Menu()
-{
-
-}
+{}
 
 Menu::Menu(vector <Usuario> users)
 {
 	this->users = users;
+}
+
+Menu::Menu(vector <Gestor> gestores)
+{
+	this->gestores = gestores;
+}
+
+Menu::Menu(vector <Usuario> users, vector <Gestor> gestores)
+{
+	this->users = users;
+	this->gestores = gestores;
 }
 
 void Menu::AnyadirUsuario(Usuario* usuario)
@@ -37,23 +49,21 @@ void Menu::AnyadirUsuario(Usuario* usuario)
 	GuardarUsuarios(users);
 }
 
+void Menu::AnyadirGestor(Gestor* gestor)
+{
+	this->gestores.push_back(*gestor);
+	GuardarGestores(gestores);
+}
+
 void Menu::MenuPrincipal()
 {
 
-	cout << "Hola" << endl;
-//	if(fexists("USUARIOS") == true)
-//	{
-//		cout << "Entra en el if" << endl;
-//		//this->users = leerUsuarios();
-//
-//		//cout << this->users[0].getNombre() << endl;
-//
-//	}
 
 
 	char c;
 	do
 	{
+		cout << "Tamaño users" << users.size() << endl;
 		cout << endl;
 		cout << "MENU PRINCIPAL" << endl;
 		cout << "-------------------" << endl;
@@ -71,7 +81,6 @@ void Menu::MenuPrincipal()
 		else if (c == '2')
 		{
 			menuGestor();
-			menuEstadisticas();
 		}
 		else if(c=='3')
 		{
@@ -82,7 +91,33 @@ void Menu::MenuPrincipal()
 
 }
 
-void Menu::inicioSesion()//vector <Usuario> &users)
+void Menu::menuGestor()
+{
+	char c;
+	do
+	{
+		cout << endl;
+		cout << "MENU GESTOR" << endl;
+		cout << "-------------------" << endl;
+		cout << "1. Inicio sesion" << endl;
+		cout << "2. Registar nuevo gestor" << endl;
+		cout << "Introduzca una opcion del 1-2:"<< endl;
+		cout << "Pulse 'q' para salir" << endl;
+		cin >> c;
+
+		if (c == '1')
+		{
+			inicioSesionGestor();
+		}
+		else if (c == '2')
+		{
+			nuevoGestor();
+		}
+
+	}while(c!='q');
+}
+
+void Menu::inicioSesion()
 {
 	char* cart = "GML";
 
@@ -94,7 +129,6 @@ void Menu::inicioSesion()//vector <Usuario> &users)
 	string dni;
 	cin >> dni;
 
-	int tamanyo = this->users.size();
 	while (dni.size()!= 9)
 	{
 		cout << "Debe contener 9 caracteres, vuelva a introducirla por favor: " << endl;
@@ -109,8 +143,8 @@ void Menu::inicioSesion()//vector <Usuario> &users)
 		if (nomUsuario.compare(a.getNombreUs())==0 && dni.compare(a.getDNI())==0)
 		{
 			cout << "Y aqui tambn " << endl;
-			int op = 0;
 
+			int op = 0;
 			a.imprimirMenu();
 
 			cin >> op;
@@ -133,20 +167,164 @@ void Menu::inicioSesion()//vector <Usuario> &users)
 	}
 }
 
-
-void Menu::verCartelera(char *cart)
+void Menu::inicioSesionGestor()
 {
-	 Cartelera cartelera = leerCartelera(cart);
+	char* cart = "GML";
 
-	 Usuario us;
-	 int op=0;
+	int codigo;
+	string dni;
+	bool existente;
+	Gestor* ges = new Gestor();
 
-	 cout<<"PELICULAS"<<endl;
-	 cout<<"------------"<<endl;
-	 for(int a=0; a<cartelera.getNumPelis(); a++)
-	 {
-		 cout<<"Pelicula "<< a+1 << ": " <<cartelera.peliculas[a].getTitulo()<<endl;
-	 }
+	do
+	{
+		existente = false;
+		cout << "Codigo Gestor:" << endl;
+		cin >> codigo;
+
+		cout << "Contrasenya (DNI):" << endl;
+		cin >> dni;
+
+		for(Gestor a:gestores)
+		{
+
+			if(a.getCodigo()==codigo && a.getDNI().compare(dni)==0)
+			{
+				cout << "Se encuentra la coincidencia" << endl;
+				existente = true;
+				*ges = a;
+			}
+
+			cout << "Sale de la comprobacion" << endl;
+		}
+		if(existente == false)
+		{
+			cout << "Los datos introducidos no coinciden con ningun gestor existente " <<endl;
+		}
+
+	}while(existente==false);
+
+
+	if(existente == true)
+	{
+
+		cout << "Entra en el if del boolean" << endl;
+		int op;
+
+		do
+		{
+			cout << "Entra en el dowhile del if" << endl;
+			op = 0;
+			ges->imprimirMenu();
+			cin >> op;
+
+			switch (op)
+			{
+				case 1:
+					mediaEdad();
+					break;
+				case 2:
+					masTaquillera(cart);
+					break;
+				case 3:
+					break;
+			}
+		}while(op!=3);
+
+	}
+
+}
+
+
+
+void Menu::nuevoUsuario()
+{
+	cout << "Nombre:" << endl;
+	string nombre;;
+	cin >> nombre;
+
+	cout << "Apellido:" << endl;
+	string apellido;
+	cin >> apellido;
+
+	cout << "Edad:" << endl;
+	int edad;
+	cin >> edad;
+
+	cout << "Usuario:" << endl;
+	string nomUsuario;
+	cin >> nomUsuario;
+
+	cout << "DNI (Contraseña):" << endl;
+	string dni;
+	cin >> dni;
+
+	while(dni.size()!= 9)
+	{
+		cout << "La contrasenya es su DNI, vuelva a introducirlo por favor: " << endl;
+		cin >> dni;
+	}
+
+	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
+
+
+	this->AnyadirUsuario(us);
+
+
+	GuardarUsuarios(users);
+
+	cout<<"BIENVENID@ "<< us->getNombre()<<"!!"<<endl;
+}
+
+void Menu::nuevoGestor()
+{
+	cout << "Nombre:" << endl;
+	string nombre;;
+	cin >> nombre;
+
+	cout << "Apellido:" << endl;
+	string apellido;
+	cin >> apellido;
+
+	string dni;
+	bool repetido;
+
+	do
+	{
+		repetido = false;
+
+		cout << "DNI (Contraseña):" << endl;
+		cin >> dni;
+
+		for(Gestor a:gestores)
+		{
+			if(a.getDNI().compare(dni)==0)
+			{
+				repetido = true;
+				cout << "Este dni ya esta registrado, introduzca otro" << endl;
+			}
+		}
+		if(dni.size()!=9)
+		{
+			cout << "Recuerde que el dni debe tener 9 caracteres" << endl;
+		}
+
+
+	}while(dni.size()!= 9 || repetido == true);
+
+	int codigo = gestores.size() + 1;
+
+
+
+
+	Gestor* ges = new Gestor(nombre, apellido, dni, codigo);
+	this->AnyadirGestor(ges);
+
+	cout << "Su codigo para acceder a la plataforma es: " << codigo << endl;
+
+	GuardarGestores(gestores);
+
+	cout<<"BIENVENID@ "<< ges->getNombre()<<"!!"<<endl;
 }
 
 void Menu::menuEstadisticas()
@@ -176,6 +354,20 @@ void Menu::menuEstadisticas()
 		MenuPrincipal();
 		break;
 	}
+}
+
+void Menu::verCartelera(char *cart)
+{
+	 Cartelera cartelera = leerCartelera(cart);
+
+	 Usuario us;
+
+	 cout<<"PELICULAS"<<endl;
+	 cout<<"------------"<<endl;
+	 for(int a=0; a<cartelera.getNumPelis(); a++)
+	 {
+		 cout<<"Pelicula "<< a+1 << ": " <<cartelera.peliculas[a].getTitulo()<<endl;
+	 }
 }
 
 void Menu::masTaquillera(char *cart) //leer el fichero y coger la pelicula que mas entradas haya vendido
@@ -213,6 +405,22 @@ void Menu::masTaquillera(char *cart) //leer el fichero y coger la pelicula que m
 
 }
 
+void Menu::mediaEdad()
+{
+	float media = 0.0;
+	int tamanyo = users.size();
+
+	cout << tamanyo << endl;
+
+	for (int i = 0; i<tamanyo;i++)
+	{
+		cout << users[i].getEdad() << endl;
+		media = +users[i].getEdad();
+	}
+
+	cout << "La media de edad de las personas que visitan C-ine es de: " << media/tamanyo << " anyos." << endl;
+}
+
 void Menu::descuentos()
 {
 	char dia;
@@ -239,63 +447,6 @@ void Menu::descuentos()
 		cout<<"Lo sentimos, hoy no hay descuentos"<<endl;
 	}
 
-}
-void Menu::menuGestor()
-{
-//	Gestor gestor = new Gestor();
-//	gestor.menuGestor();
-}
-
-void Menu::nuevoUsuario()
-{
-	cout << "Nombre:" << endl;
-	string nombre;;
-	cin >> nombre;
-
-	cout << "Apellido:" << endl;
-	string apellido;
-	cin >> apellido;
-
-	cout << "Edad:" << endl;
-	int edad;
-	cin >> edad;
-
-	cout << "Usuario:" << endl;
-	string nomUsuario;
-	cin >> nomUsuario;
-
-	cout << "Contrasenya (DNI):" << endl;
-	string dni;
-	cin >> dni;
-
-	while(dni.size()!= 9)
-	{
-		cout << "La contrasenya es su DNI, vuelva a introducirlo por favor: " << endl;
-		cin >> dni;
-	}
-
-	Usuario* us = new Usuario(nomUsuario, nombre, apellido, dni, edad);
-
-
-	this->AnyadirUsuario(us);
-
-
-	GuardarUsuarios(users);
-
-	cout<<"BIENVENID@ "<< us->getNombre()<<"!!"<<endl;
-}
-
-void Menu::mediaEdad()
-{
-	float media = 0;
-	int tamanyo = sizeof(users);
-
-	for (int i = 0; i<tamanyo;i++)
-	{
-		media = +users[i].getEdad();
-	}
-
-	cout << "La media de edad de las personas que visitan C-ine es de: " << media/tamanyo << "anyos." << endl;
 }
 
 

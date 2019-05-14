@@ -7,9 +7,11 @@
 
 #include <iostream>
 #include "Usuario.h"
+#include "Gestor.h"
 #include <vector>
 using namespace containers;
 using namespace std;
+using namespace gestor;
 
 #ifndef MAIN_H_
 #define MAIN_H_
@@ -20,20 +22,26 @@ namespace menu
 	{
 			private:
 				vector <Usuario> users;
+				vector <Gestor> gestores;
 			public:
 				Menu();
 				Menu(vector <Usuario> users);
+				Menu(vector <Gestor> gestores);
+				Menu(vector <Usuario> users, vector <Gestor> gestores);
 
 				void AnyadirUsuario(Usuario *us);
+				void AnyadirGestor(Gestor* gestor);
 
 				void MenuPrincipal();
-				void inicioSesion();//vector <Usuario> &users);
-				void menuEstadisticas();//vector <Usuario> &users);
+				void inicioSesion();
+				void inicioSesionGestor();
+				void menuEstadisticas();
 				void masTaquillera(char *cart);
 				void descuentos();
 				void menuGestor();
-				void mediaEdad();//vector <Usuario> users);
-				void nuevoUsuario();//vector <Usuario> &users);
+				void mediaEdad();
+				void nuevoUsuario();
+				void nuevoGestor();
 				void verCartelera(char *cart);
 
 	};
