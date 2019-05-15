@@ -151,50 +151,52 @@ void Menu::inicioSesion()
 			repetido = true;
 			*us = a;
 
-			int op = 0;
-			char* cart1 = nombreCine(); //Aquí pide al usuario el nombre del cine
-			a.imprimirMenu();
-
-			cin >> op;
-
-			switch (op)
-			{
-				case 1:
-					verCartelera(cart1);
-					break;
-				case 2:
-					masTaquillera(cart1);
-					break;
-				case 3:
-					descuentos();
-					break;
-			}
+//			int op = 0;
+//			//char* cart1 = nombreCine(); //Aquï¿½ pide al usuario el nombre del cine
+//			a.imprimirMenu();
+//
+//			cin >> op;
+//
+//			switch (op)
+//			{
+//				case 1:
+//					//verCartelera(cart1);
+//					break;
+//				case 2:
+//					masTaquillera();
+//					break;
+//				case 3:
+//					descuentos();
+//					break;
+//			}
 
 			if(repetido == true)
 			{
-					do
+				int op=0;
+
+				do
+				{
+					op=0;
+					cout << "entra en dowhilee"<<endl;
+					//char* cart2 = nombreCine(); //Aquï¿½ pide al usuario el nombre del cine
+					us ->imprimirMenu();
+					cin >> op;
+
+					switch(op)
 					{
-						int op=0;
-						cout << "entra en dowhilee"<<endl;
-						char* cart2 = nombreCine(); //Aquí pide al usuario el nombre del cine
-						us ->imprimirMenu();
-						cin >> op;
-
-						switch(op)
-						{
-						case 1:
-							verCartelera(cart2);
-							break;
-						case 2:
-							masTaquillera(cart2);
-							break;
-						case 3:
-							descuentos();
-							break;
-						}
+					case 1:
+						//verCartelera(cart2);
+						break;
+					case 2:
+						masTaquillera();
+						break;
+					case 3:
+						descuentos();
+						break;
+					}
 
 
-					}while (op!=4);
+				}while (op!=4);
 			}
 
 		}
@@ -267,7 +269,7 @@ void Menu::inicioSesionGestor()
 					mediaEdad();
 					break;
 				case 2:
-					masTaquillera(cart);
+					masTaquillera();
 					break;
 				case 3:
 					break;
@@ -397,7 +399,7 @@ void Menu::menuEstadisticas()
 
 	switch (op) {
 	case 1:
-		masTaquillera(cart);
+		masTaquillera();
 		break;
 	case 2:
 		descuentos();
@@ -426,50 +428,73 @@ void Menu::verCartelera(char *cart)
 	 }
 }
 
-void Menu::masTaquillera(char *cart) //leer el fichero y coger la pelicula que mas entradas haya vendido
+void Menu::masTaquillera() //leer el fichero y coger la pelicula que mas entradas haya vendido
 {
-//	cout << "Elige el cine al que quieres ir:" << endl;
-//	cin>>cart;
-//	strcat(cart, "Cartelera.txt");
-//	int existe = exists(cart);
-//	if (existe ==0)
-//	{
-//		cout<<"Este cine no existe"<<endl;
-//		MenuPrincipal();
-//	}
 
-//	else
-//	{
-		Pelicula peli;
-		Cartelera cartelera = leerCartelera(cart);
-		int mayor = cartelera.peliculas[0].sesiones[0].getPlazas();
+	char nombre[100];
+	char nombre2[100];
+	bool existe;
 
-		int mayorVisitas = 0;
+	do
+	{
 
-
-		for(int i=0; i<cartelera.getNumPelis(); i++)
+		cout << "Escribe el nombre del cine, por favor:" << endl;
+		scanf("%s", nombre);
+		strcpy(nombre2, nombre);
+		for (int i = 0; i < strlen(nombre); i++)
 		{
-			int suma = 0;
-			for(int j=0; j<cartelera.peliculas[i].getNumSesiones(); j++)
-			{
-				int aux = 22-cartelera.peliculas[i].sesiones[j].getPlazas();
-				suma += aux;
-			}
-			if(i==0)
-			{
-				peli = cartelera.peliculas[i];
-				mayorVisitas = suma;
-			}else
-			{
-				if(suma>mayorVisitas)
-				{
-					peli = cartelera.peliculas[i];
-				}
-			}
+			nombre[i] = toupper(nombre[i]);
 		}
 
-		cout << "La peli mÃ¡s taquillera es: " << peli.getTitulo() << endl;
+		strcat(nombre, "Cartelera.txt");
+
+		//cin >> nombreCine;
+		//transform(nombreCine.begin(), nombreCine.end(), nombreCine.begin(), ::toupper);
+		//strcpy (nombre, nombreCine.c_str());
+		existe = fexists(nombre);
+		if(existe==false)
+		{
+			cout << "No hay informacion sobre este cine, introduzca otro porfavor" << endl;
+		}
+
+	}while(existe == false);
+
+	cout << "Sale del dowhile2222" << endl;
+
+
+
+	cout << "Llega hasta aqui" << endl;
+	Pelicula peli;
+	Cartelera cartelera = leerCartelera(nombre2);
+	cout << "Hasta aqui tambn" << endl;
+	int mayor = cartelera.peliculas[0].sesiones[0].getPlazas();
+
+	int mayorVisitas = 0;
+
+
+	for(int i=0; i<cartelera.getNumPelis(); i++)
+	{
+		int suma = 0;
+		for(int j=0; j<cartelera.peliculas[i].getNumSesiones(); j++)
+		{
+			int aux = 22-cartelera.peliculas[i].sesiones[j].getPlazas();
+			suma += aux;
+		}
+		if(i==0)
+		{
+			peli = cartelera.peliculas[i];
+			mayorVisitas = suma;
+		}else
+		{
+			if(suma>mayorVisitas)
+			{
+				peli = cartelera.peliculas[i];
+			}
+		}
 	}
+
+	cout << "La peli mÃ¡s taquillera es: " << peli.getTitulo() << endl;
+}
 //}
 
 void Menu::mediaEdad()
@@ -528,10 +553,35 @@ int exists(const char *fname)
 char* Menu::nombreCine()
 {
 	string nombreCine;
-	cout << "Escribe el nombre del cine, por favor:" << endl;
-	cin >> nombreCine;
-	char* nombre;
-	strcpy (nombre, nombreCine.c_str());
+	char nombre[100];
+	char nombre2[100];
+	bool existe;
 
-	return nombre;
+	do
+	{
+
+		cout << "Escribe el nombre del cine, por favor:" << endl;
+		scanf("%s", nombre);
+		strcpy(nombre2, nombre);
+		for (int i = 0; i < strlen(nombre); i++)
+		{
+			nombre[i] = toupper(nombre[i]);
+		}
+
+		strcat(nombre, "Cartelera.txt");
+
+		//cin >> nombreCine;
+		//transform(nombreCine.begin(), nombreCine.end(), nombreCine.begin(), ::toupper);
+		//strcpy (nombre, nombreCine.c_str());
+		existe = fexists(nombre);
+		if(existe==false)
+		{
+			cout << "No hay informacion sobre este cine, introduzca otro porfavor" << endl;
+		}
+
+	}while(existe == false);
+
+	cout << "Sale del dowhile2222" << endl;
+
+	return nombre2;
 }

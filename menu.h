@@ -36,7 +36,7 @@ namespace menu
 				void inicioSesion();
 				void inicioSesionGestor();
 				void menuEstadisticas();
-				void masTaquillera(char *cart);
+				void masTaquillera();
 				void descuentos();
 				void menuGestor();
 				void mediaEdad();
