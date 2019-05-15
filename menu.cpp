@@ -7,7 +7,7 @@
 #include "menu.h"
 #include <iostream>
 #include <cstdio>
-#include <string>
+#include <string.h>
 #include <vector>
 #include "Persona.h"
 #include "Usuario.h"
@@ -120,7 +120,7 @@ void Menu::menuGestor()
 
 void Menu::inicioSesion()
 {
-	char* cart = "GML";
+
 	Usuario* us = new Usuario();
 
 	cout << "Usuario:" << endl;
@@ -152,6 +152,7 @@ void Menu::inicioSesion()
 			*us = a;
 
 			int op = 0;
+			char* cart1 = nombreCine(); //Aquí pide al usuario el nombre del cine
 			a.imprimirMenu();
 
 			cin >> op;
@@ -159,10 +160,10 @@ void Menu::inicioSesion()
 			switch (op)
 			{
 				case 1:
-					verCartelera(cart);
+					verCartelera(cart1);
 					break;
 				case 2:
-					masTaquillera(cart);
+					masTaquillera(cart1);
 					break;
 				case 3:
 					descuentos();
@@ -171,22 +172,21 @@ void Menu::inicioSesion()
 
 			if(repetido == true)
 			{
-				int op;
-
 					do
 					{
+						int op=0;
 						cout << "entra en dowhilee"<<endl;
-						op = 0;
+						char* cart2 = nombreCine(); //Aquí pide al usuario el nombre del cine
 						us ->imprimirMenu();
 						cin >> op;
 
 						switch(op)
 						{
 						case 1:
-							verCartelera(cart);
+							verCartelera(cart2);
 							break;
 						case 2:
-							masTaquillera(cart);
+							masTaquillera(cart2);
 							break;
 						case 3:
 							descuentos();
@@ -209,7 +209,7 @@ void Menu::inicioSesion()
 
 void Menu::inicioSesionGestor()
 {
-	char* cart = "GML";
+	char* cart = nombreCine();
 
 	char codigo[20];
 	int codigo2;
@@ -525,4 +525,13 @@ int exists(const char *fname)
     }
     return 0;
 }
+char* Menu::nombreCine()
+{
+	string nombreCine;
+	cout << "Escribe el nombre del cine, por favor:" << endl;
+	cin >> nombreCine;
+	char* nombre;
+	strcpy (nombre, nombreCine.c_str());
 
+	return nombre;
+}
