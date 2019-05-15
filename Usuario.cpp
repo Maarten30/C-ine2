@@ -52,7 +52,7 @@ void Usuario::imprimirMenu()
 {
 
 	cout<<endl;
-	cout << "MENU USUARIO" <<endl;
+	cout << "MENU USUARIO: " << this->getNombre() <<endl;
 	cout << "-------------------"<<endl;
 	cout << "1. Ver cartelera" <<endl;
 	cout << "2. Pelicula mas taquillera" <<endl;

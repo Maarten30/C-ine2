@@ -71,6 +71,8 @@ void Menu::MenuPrincipal()
 		cout << "Pulse 'q' para salir" << endl;
 		cin >> c;
 
+
+
 		if (c == '1')
 		{
 			inicioSesion();
@@ -151,7 +153,14 @@ void Menu::inicioSesion()
 				{
 					op=0;
 					us ->imprimirMenu();
-					cin >> op;
+
+					while(!(cin >> op)) {
+					   string garbage;
+					   cin.clear();
+					   getline(cin,garbage);
+					   cout << "Opcion no valida. "
+					        << "Introduzca un valor numérico: " << endl;
+					}
 
 					switch(op)
 					{
@@ -224,7 +233,14 @@ void Menu::inicioSesionGestor()
 		{
 			op = 0;
 			ges->imprimirMenu();
-			cin >> op;
+			while(!(cin >> op))
+			{
+			   string garbage;
+			   cin.clear();
+			   getline(cin,garbage);
+			   cout << "Opcion no valida. "
+					<< "Introduzca un valor numérico: " << endl;
+			}
 
 			switch (op)
 			{
@@ -472,12 +488,9 @@ void Menu::mediaEdad()
 	float media = 0.0;
 	int tamanyo = users.size();
 
-	cout << tamanyo << endl;
-
 	for (int i = 0; i<tamanyo;i++)
 	{
-		cout << users[i].getEdad() << endl;
-		media = +users[i].getEdad();
+		media += users[i].getEdad();
 	}
 
 	cout << "La media de edad de las personas que visitan C-ine es de: " << media/tamanyo << " anyos." << endl;
@@ -497,17 +510,33 @@ void Menu::descuentos()
 	cout<<"Viernes (V)"<<endl;
 	cout<<"Sabado (S)"<<endl;
 	cout<<"Domingo (D)"<<endl;
-	cin>>dia;
 
-	if(dia=='X' || dia=='x')
-	{
-		cout<<"Tienes un descuento del 50% en todas las peliculas"<<endl;
-	}
+	bool correcto;
 
-	else
+	do
 	{
-		cout<<"Lo sentimos, hoy no hay descuentos"<<endl;
-	}
+		correcto = false;
+		cin>>dia;
+
+		if ( strchr("lLmMxXjJvVsSdD", dia) != NULL )
+		{
+			correcto = true;
+		}else
+		{
+			cout << "Introduzca un día existente: " << endl;
+		}
+
+		if(dia=='X' || dia=='x')
+		{
+			cout<<"Tienes un descuento del 50% en todas las peliculas"<<endl;
+		}else if((dia!='x' || dia!='X') && correcto==true)
+		{
+			cout<<"Lo sentimos, hoy no hay descuentos"<<endl;
+		}
+
+
+	}while(correcto == false);
+
 }
 
 int Menu:: exists(const char *fname)
