@@ -42,15 +42,10 @@ namespace menu
 				void mediaEdad();
 				void nuevoUsuario();
 				void nuevoGestor();
-				void verCartelera(char *cart);
+				void verCartelera();
 				int exists(const char *fname);
 				char* nombreCine();
 	};
 }
-
-
-
-
-
 
 #endif /* MAIN_H_ */

@@ -25,7 +25,6 @@ namespace cartelera
 			void setPlazas(int plazas);
 			double getHora();
 			void setHora(double hora);
-
 	};
 
 	class Pelicula
@@ -35,11 +34,9 @@ namespace cartelera
 			string descripcion;
 			int numSesiones;
 
-
 		public:
 			Sesion *sesiones;
 			Pelicula();
-			//Pelicula(string titulo, string descripcion, int numSesiones, Sesion* sesiones);
 			string getTitulo();
 			void setTitulo(string titulo);
 			string getDesc();
@@ -48,8 +45,6 @@ namespace cartelera
 			void setNumSesiones(int NumSesiones);
 			Sesion* getSesiones();
 			void setSesiones(Sesion* sesiones);
-
-
 	};
 
 	class Cartelera
@@ -61,7 +56,6 @@ namespace cartelera
 		public:
 			Pelicula *peliculas;
 			Cartelera();
-			//Cartelera(string cine, Pelicula* peliculas, int numPelis);
 			string getCine();
 			void setCine(string cine);
 			Pelicula* getPeliculas();
@@ -70,6 +64,5 @@ namespace cartelera
 			void setNumPelis(int NumPelis);
 	};
 }
-
 
 #endif /* CARTELERA_H_ */

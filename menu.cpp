@@ -58,13 +58,9 @@ void Menu::AnyadirGestor(Gestor* gestor)
 
 void Menu::MenuPrincipal()
 {
-
-
-
 	char c;
 	do
 	{
-		cout << "Tamanyoo users" << users.size() << endl;
 		cout << endl;
 		cout << "MENU PRINCIPAL" << endl;
 		cout << "-------------------" << endl;
@@ -140,35 +136,12 @@ void Menu::inicioSesion()
 		cin >> dni;
 	}
 
-	cout << "LLega aquiiiiiiiiiii " << endl;
 	for (Usuario a: users)
 	{
-		cout << "Entra acaaaaa " << endl;
-
 		if (nomUsuario.compare(a.getNombreUs())==0 && dni.compare(a.getDNI())==0)
 		{
-			cout << "Y aqui tambn " << endl;
 			repetido = true;
 			*us = a;
-
-//			int op = 0;
-//			//char* cart1 = nombreCine(); //Aqu� pide al usuario el nombre del cine
-//			a.imprimirMenu();
-//
-//			cin >> op;
-//
-//			switch (op)
-//			{
-//				case 1:
-//					//verCartelera(cart1);
-//					break;
-//				case 2:
-//					masTaquillera();
-//					break;
-//				case 3:
-//					descuentos();
-//					break;
-//			}
 
 			if(repetido == true)
 			{
@@ -177,15 +150,13 @@ void Menu::inicioSesion()
 				do
 				{
 					op=0;
-					cout << "entra en dowhilee"<<endl;
-					//char* cart2 = nombreCine(); //Aqu� pide al usuario el nombre del cine
 					us ->imprimirMenu();
 					cin >> op;
 
 					switch(op)
 					{
 					case 1:
-						//verCartelera(cart2);
+						verCartelera();
 						break;
 					case 2:
 						masTaquillera();
@@ -198,10 +169,7 @@ void Menu::inicioSesion()
 
 				}while (op!=4);
 			}
-
 		}
-
-
 	}
 	if (repetido == false)
 	{
@@ -231,12 +199,9 @@ void Menu::inicioSesionGestor()
 
 			for (Gestor a : gestores) {
 				if (a.getCodigo() == codigo2 && a.getDNI().compare(dni) == 0) {
-					cout << "Se encuentra la coincidencia" << endl;
 					existente = true;
 					*ges = a;
 				}
-
-				cout << "Sale de la comprobacion" << endl;
 			}
 			if (existente == false) {
 				cout<< "Los datos introducidos no coinciden con ningun gestor existente "<< endl;
@@ -253,12 +218,10 @@ void Menu::inicioSesionGestor()
 
 	if(existente == true)
 	{
-		cout << "Entra en el if del boolean" << endl;
 		int op;
 
 		do
 		{
-			cout << "Entra en el dowhile del if" << endl;
 			op = 0;
 			ges->imprimirMenu();
 			cin >> op;
@@ -277,7 +240,6 @@ void Menu::inicioSesionGestor()
 		}while(op!=3);
 
 	}
-
 }
 
 void Menu::nuevoUsuario()
@@ -382,13 +344,11 @@ void Menu::nuevoGestor()
 
 	GuardarGestores(gestores);
 
-	cout<<"BIENVENID@ "<< ges->getNombre()<<"!!"<<endl;
+	cout<<"BIENVENIDO/A "<< ges->getNombre()<<"!!"<<endl;
 }
 
 void Menu::menuEstadisticas()
 {
-	char* cart = "GML";
-
 	int op=0;
 	cout << "Que estadisticas quieres consultar?" << endl;
 	cout << "1. Pelicula mas taquillera"<<endl;
@@ -408,15 +368,39 @@ void Menu::menuEstadisticas()
 		mediaEdad();
 		break;
 	case 4:
-//		main();
 		MenuPrincipal();
 		break;
 	}
 }
 
-void Menu::verCartelera(char *cart)
+void Menu::verCartelera()
 {
-	 Cartelera cartelera = leerCartelera(cart);
+	char nombre[100];
+		char nombre2[100];
+		bool existe;
+
+		do
+		{
+
+			cout << "Escribe el nombre del cine, por favor:" << endl;
+			scanf("%s", nombre);
+			strcpy(nombre2, nombre);
+			for (int i = 0; i < strlen(nombre); i++)
+			{
+				nombre[i] = toupper(nombre[i]);
+			}
+
+			strcat(nombre, "Cartelera.txt");
+			existe = fexists(nombre);
+			if(existe==false)
+			{
+				cout << "No hay informacion sobre este cine, introduzca otro porfavor" << endl;
+			}
+
+		}while(existe == false);
+
+		Pelicula peli;
+		Cartelera cartelera = leerCartelera(nombre2);
 
 	 Usuario us;
 
@@ -430,7 +414,6 @@ void Menu::verCartelera(char *cart)
 
 void Menu::masTaquillera() //leer el fichero y coger la pelicula que mas entradas haya vendido
 {
-
 	char nombre[100];
 	char nombre2[100];
 	bool existe;
@@ -447,10 +430,6 @@ void Menu::masTaquillera() //leer el fichero y coger la pelicula que mas entrada
 		}
 
 		strcat(nombre, "Cartelera.txt");
-
-		//cin >> nombreCine;
-		//transform(nombreCine.begin(), nombreCine.end(), nombreCine.begin(), ::toupper);
-		//strcpy (nombre, nombreCine.c_str());
 		existe = fexists(nombre);
 		if(existe==false)
 		{
@@ -459,18 +438,10 @@ void Menu::masTaquillera() //leer el fichero y coger la pelicula que mas entrada
 
 	}while(existe == false);
 
-	cout << "Sale del dowhile2222" << endl;
-
-
-
-	cout << "Llega hasta aqui" << endl;
 	Pelicula peli;
 	Cartelera cartelera = leerCartelera(nombre2);
-	cout << "Hasta aqui tambn" << endl;
-	int mayor = cartelera.peliculas[0].sesiones[0].getPlazas();
 
 	int mayorVisitas = 0;
-
 
 	for(int i=0; i<cartelera.getNumPelis(); i++)
 	{
@@ -495,7 +466,6 @@ void Menu::masTaquillera() //leer el fichero y coger la pelicula que mas entrada
 
 	cout << "La peli más taquillera es: " << peli.getTitulo() << endl;
 }
-//}
 
 void Menu::mediaEdad()
 {
@@ -540,7 +510,7 @@ void Menu::descuentos()
 	}
 }
 
-int exists(const char *fname)
+int Menu:: exists(const char *fname)
 {
     FILE *file;
     if ((file = fopen(fname, "r")))
@@ -559,7 +529,6 @@ char* Menu::nombreCine()
 
 	do
 	{
-
 		cout << "Escribe el nombre del cine, por favor:" << endl;
 		scanf("%s", nombre);
 		strcpy(nombre2, nombre);
@@ -569,10 +538,6 @@ char* Menu::nombreCine()
 		}
 
 		strcat(nombre, "Cartelera.txt");
-
-		//cin >> nombreCine;
-		//transform(nombreCine.begin(), nombreCine.end(), nombreCine.begin(), ::toupper);
-		//strcpy (nombre, nombreCine.c_str());
 		existe = fexists(nombre);
 		if(existe==false)
 		{
@@ -580,8 +545,6 @@ char* Menu::nombreCine()
 		}
 
 	}while(existe == false);
-
-	cout << "Sale del dowhile2222" << endl;
 
 	return nombre2;
 }

@@ -32,29 +32,6 @@ namespace containers
 			void setNombreUs(string nombreUs);
 			void setEdad (int edad);
 	};
-//	{
-//		private:
-//
-//			string nomUsuario;
-//			string nombre;
-//			string apellido;
-//			string dni;
-//
-//
-//		public:
-//			Usuario();
-//			Usuario(string nomUs, string nombre, string apellido): Persona(string nombre, string apellido, string dni);
-//			Usuario(string nomUs, string nombre, string apellido);
-//			~Usuario();
-//			int poll();
-//			string getNomUs();
-//			void setNomUs(string nombre);
-//
-//
-//
-//			void clear();
-//	};
-
 }
 
 #endif /* USUARIO_H_ */

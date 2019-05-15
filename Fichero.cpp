@@ -126,22 +126,15 @@ void GuardarUsuarios(vector <Usuario> users)
 
 vector<Usuario> leerUsuarios()
 {
-
-	cout << "Entra en el metodo " << endl;
-
 	vector <Usuario> users;
 	FILE *f;
 	int numUsuarios = 0;
 
 	f = fopen("USUARIOS.txt", "r");
 
-	cout << "Hasta aqui bien " << endl;
-
-
-
 	numUsuarios = (lineasFichero("USUARIOS.txt")-1)/5;
 
-	cout << "numUsuarios: " << numUsuarios<< endl;
+//	cout << "numUsuarios: " << numUsuarios<< endl;
 
 	char buff[255];
 	string nombre = "";
@@ -150,20 +143,12 @@ vector<Usuario> leerUsuarios()
 	string nomUs = "";
 	string dni = "";
 
-
-	cout << "So far so good2 " << endl;
 	fscanf(f, " %[^\t\n]s", buff);
-
 
 	for(int i=0; i<numUsuarios; i++)
 	{
-
-		cout << "So far so good3 " << endl;
 		fscanf(f, " %[^\t\n]s", buff);
 		nombre = string(buff);
-		cout << "El nombre de MH es: " << nombre << endl;
-
-		cout << "So far so good4 " << endl;
 
 		fscanf(f, " %[^\t\n]s", buff);
 		apellido = string(buff);
@@ -213,19 +198,13 @@ void GuardarGestores(vector <Gestor> gestores)
 vector<Gestor> leerGestores()
 {
 
-	cout << "Entra en el metodo de leerGestores " << endl;
-
 	vector <Gestor> gestores;
 	FILE *f;
 	int numGestores = 0;
 
 	f = fopen("GESTORES.txt", "r");
 
-	cout << "Hasta aqui bien " << endl;
-
 	numGestores = (lineasFichero("GESTORES.txt")-1)/4;
-
-	cout << "So far so good " << endl;
 
 	char buff[255];
 	string nombre = "";
@@ -233,21 +212,14 @@ vector<Gestor> leerGestores()
 	string dni = "";
 	int codigo = 0;
 
-
-
-	cout << "So far so good2 " << endl;
 	fscanf(f, " %[^\t\n]s", buff);
 
 
 	for(int i=0; i<numGestores; i++)
 	{
 
-		cout << "So far so good3 " << endl;
-
 		fscanf(f, " %[^\t\n]s", buff);
 		nombre = string(buff);
-
-		cout << "So far so good4 " << endl;
 
 		fscanf(f, " %[^\t\n]s", buff);
 		apellido = string(buff);
@@ -276,7 +248,7 @@ int lineasFichero(char *fichero)
 {
     FILE *fileptr;
     int count_lines = 0;
-    char filechar[40], chr;
+    char chr;
 
     fileptr = fopen(fichero, "r");
    //extract character from file and store in chr

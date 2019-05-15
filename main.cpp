@@ -24,11 +24,8 @@ using namespace menu;
 
 int main()
 {
-	cout << "Main" << endl;
-
 	if(fexists("USUARIOS.txt")==true && fexists("GESTORES.txt")==true)
 	{
-		cout << "CASO 1" << endl;
 		vector <Usuario> users = leerUsuarios();
 		vector <Gestor> gestores = leerGestores();
 		Menu* menucito = new Menu(users, gestores);
