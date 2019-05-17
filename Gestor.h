@@ -22,6 +22,7 @@ namespace gestor
 		public:
 			Gestor();
 			Gestor(string nombre, string apellido,string dni, int codigo);
+			virtual ~Gestor();
 			virtual void imprimirMenu();
 
 			int getCodigo();

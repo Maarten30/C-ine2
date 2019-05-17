@@ -28,6 +28,11 @@ Gestor::Gestor(string nombre, string apellido, string dni, int codigo):Persona(n
 	this ->codigo=codigo;
 }
 
+Gestor::~Gestor()
+{
+
+}
+
 int Gestor::getCodigo()
 {
 	return this->codigo;

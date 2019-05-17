@@ -24,6 +24,11 @@ Persona:: Persona(string nombre, string apellido, string dni)
 	this->dni = dni;
 }
 
+Persona::~Persona()
+{
+
+}
+
 string Persona::getNombre()
 {
 	return this->nombre;
@@ -54,6 +59,4 @@ void Persona::setDni(string dni)
 	this ->dni = dni;
 }
 
-Persona::~Persona(){
 
-}

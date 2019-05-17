@@ -25,6 +25,7 @@ namespace containers
 		public:
 			Usuario();
 			Usuario(string nombre, string apellido, string dni, string nomUs, int edad);
+			virtual ~Usuario();
 			virtual void imprimirMenu();
 
 			string getNombreUs();

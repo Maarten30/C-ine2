@@ -29,6 +29,7 @@ namespace persona
 			string getDNI();
 
 			virtual void imprimirMenu()=0;
+
 			void setNombre(string nombre);
 			void setApellido(string apellido);
 			void setDni(string dni);

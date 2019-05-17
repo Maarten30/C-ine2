@@ -22,12 +22,13 @@ Usuario::Usuario():Persona()
 
 Usuario::Usuario(string nomUs, string nombre, string ape, string dni, int edad):Persona(nombre,ape,dni)
 {
-
 	this->nomUsuario = nomUs;
 	this->edad = edad;
+}
+Usuario::~Usuario()
+{
 
 }
-
 string Usuario::getNombreUs()
 {
 	return this->nomUsuario;

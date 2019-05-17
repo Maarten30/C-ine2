@@ -44,6 +44,16 @@ Menu::Menu(vector <Usuario> users, vector <Gestor> gestores)
 	this->gestores = gestores;
 }
 
+Menu::~Menu()
+{
+
+}
+
+vector<Gestor> Menu::getGestores()
+{
+	return this->gestores;
+}
+
 void Menu::AnyadirUsuario(Usuario* usuario)
 {
 	this->users.push_back(*usuario);

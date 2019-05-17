@@ -28,6 +28,9 @@ namespace menu
 				Menu(vector <Usuario> users);
 				Menu(vector <Gestor> gestores);
 				Menu(vector <Usuario> users, vector <Gestor> gestores);
+				~Menu();
+
+				vector<Gestor> getGestores();
 
 				void AnyadirUsuario(Usuario *us);
 				void AnyadirGestor(Gestor* gestor);
