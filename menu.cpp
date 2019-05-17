@@ -46,7 +46,7 @@ Menu::Menu(vector <Usuario> users, vector <Gestor> gestores)
 
 Menu::~Menu()
 {
-
+	//No hay que hacer delete porque no tenemos variables que necesiten de un new
 }
 
 vector<Gestor> Menu::getGestores()

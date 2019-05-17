@@ -30,7 +30,7 @@ Gestor::Gestor(string nombre, string apellido, string dni, int codigo):Persona(n
 
 Gestor::~Gestor()
 {
-
+	//No hay que hacer delete porque no tenemos variables que necesiten de un new
 }
 
 int Gestor::getCodigo()

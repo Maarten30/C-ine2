@@ -24,6 +24,11 @@ Sesion::Sesion(int plazas, double hora)
 	this->hora = hora;
 }
 
+Sesion:: ~Sesion()
+{
+	//No hay que hacer delete porque no tenemos variables que necesiten de un new
+}
+
 int Sesion::getPlazas()
 {
 	return this->plazas;

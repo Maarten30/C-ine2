@@ -26,7 +26,7 @@ Persona:: Persona(string nombre, string apellido, string dni)
 
 Persona::~Persona()
 {
-
+	//No hay que hacer delete porque no tenemos variables que necesiten de un new
 }
 
 string Persona::getNombre()

@@ -27,7 +27,7 @@ Usuario::Usuario(string nomUs, string nombre, string ape, string dni, int edad):
 }
 Usuario::~Usuario()
 {
-
+	//No hay que hacer delete porque no tenemos variables que necesiten de un new
 }
 string Usuario::getNombreUs()
 {

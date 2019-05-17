@@ -21,6 +21,7 @@ namespace cartelera
 		public:
 			Sesion();
 			Sesion(int plazas, double hora);
+			~Sesion();
 			int getPlazas();
 			void setPlazas(int plazas);
 			double getHora();
@@ -37,6 +38,7 @@ namespace cartelera
 		public:
 			Sesion *sesiones;
 			Pelicula();
+			~Pelicula();
 			string getTitulo();
 			void setTitulo(string titulo);
 			string getDesc();
@@ -56,6 +58,7 @@ namespace cartelera
 		public:
 			Pelicula *peliculas;
 			Cartelera();
+			~Cartelera();
 			string getCine();
 			void setCine(string cine);
 			Pelicula* getPeliculas();
