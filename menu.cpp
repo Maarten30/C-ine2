@@ -188,7 +188,6 @@ void Menu::inicioSesion()
 
 void Menu::inicioSesionGestor()
 {
-	char* cart = nombreCine();
 
 	char codigo[20];
 	int codigo2;
@@ -363,31 +362,7 @@ void Menu::nuevoGestor()
 	cout<<"BIENVENIDO/A "<< ges->getNombre()<<"!!"<<endl;
 }
 
-void Menu::menuEstadisticas()
-{
-	int op=0;
-	cout << "Que estadisticas quieres consultar?" << endl;
-	cout << "1. Pelicula mas taquillera"<<endl;
-	cout << "2. Echa un vistazo a los descuentos!" << endl;
-	cout << "3. Media de edad de los usuarios que visitan el cine" << endl;
-	cout << "4. Menu principal" << endl;
-	cin >> op;
 
-	switch (op) {
-	case 1:
-		masTaquillera();
-		break;
-	case 2:
-		descuentos();
-		break;
-	case 3:
-		mediaEdad();
-		break;
-	case 4:
-		MenuPrincipal();
-		break;
-	}
-}
 
 void Menu::verCartelera()
 {
@@ -548,32 +523,4 @@ int Menu:: exists(const char *fname)
         return 1;
     }
     return 0;
-}
-char* Menu::nombreCine()
-{
-	string nombreCine;
-	char nombre[100];
-	char nombre2[100];
-	bool existe;
-
-	do
-	{
-		cout << "Escribe el nombre del cine, por favor:" << endl;
-		scanf("%s", nombre);
-		strcpy(nombre2, nombre);
-		for (int i = 0; i < strlen(nombre); i++)
-		{
-			nombre[i] = toupper(nombre[i]);
-		}
-
-		strcat(nombre, "Cartelera.txt");
-		existe = fexists(nombre);
-		if(existe==false)
-		{
-			cout << "No hay informacion sobre este cine, introduzca otro porfavor" << endl;
-		}
-
-	}while(existe == false);
-
-	return nombre2;
 }

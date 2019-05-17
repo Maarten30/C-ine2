@@ -35,7 +35,6 @@ namespace menu
 				void MenuPrincipal();
 				void inicioSesion();
 				void inicioSesionGestor();
-				void menuEstadisticas();
 				void masTaquillera();
 				void descuentos();
 				void menuGestor();
@@ -44,7 +43,6 @@ namespace menu
 				void nuevoGestor();
 				void verCartelera();
 				int exists(const char *fname);
-				char* nombreCine();
 	};
 }
 
