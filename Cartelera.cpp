@@ -60,6 +60,11 @@ Pelicula::Pelicula()
 	this->sesiones = NULL;
 }
 
+Pelicula::~Pelicula()
+{
+
+}
+
 string Pelicula::getDesc()
 {
 	return this->descripcion;
@@ -103,6 +108,11 @@ Cartelera::Cartelera()
 	this->cine = "";
 	this->numPelis = 0;
 	this->peliculas = NULL;
+}
+
+Cartelera::~Cartelera()
+{
+
 }
 
 string Cartelera::getCine()
