@@ -78,7 +78,7 @@ void Menu::MenuPrincipal()
 		cout << "1. Inicio sesion" << endl;
 		cout << "2. Administrador" << endl;
 		cout << "3. Registarse" << endl;
-		cout << "Introduzca una opcion del 1-3:"<< endl;
+		cout << "Introduzca una opcion del 1-3: "<< endl;
 		cout << "Pulse 'q' para salir" << endl;
 		cin >> c;
 
