@@ -30,24 +30,27 @@ int main()
 		vector <Gestor> gestores = leerGestores();
 		Menu* menucito = new Menu(users, gestores);
 		menucito->MenuPrincipal();
+		menucito->~Menu();
 
 	}else if(fexists("USUARIOS.txt")==true && fexists("GESTORES.txt")==false)
 	{
 		vector <Usuario> users = leerUsuarios();
 		Menu* menucito = new Menu(users);
 		menucito->MenuPrincipal();
+		menucito->~Menu();
 
 	}else if(fexists("USUARIOS.txt")==false && fexists("GESTORES.txt")==true)
 	{
 		vector <Gestor> gestores = leerGestores();
 		Menu* menucito = new Menu(gestores);
 		menucito->MenuPrincipal();
+		menucito->~Menu();
 
 	}else if(fexists("USUARIOS.txt")==false && fexists("GESTORES.txt")==false)
 	{
 		Menu* menucito = new Menu();
-		cout << "Se crea el menu vacio" << endl;
 		menucito->MenuPrincipal();
+		menucito->~Menu();
 	}
 
 	return 0;

@@ -45,7 +45,6 @@ namespace menu
 				void nuevoUsuario();
 				void nuevoGestor();
 				void verCartelera();
-				int exists(const char *fname);
 	};
 }
 

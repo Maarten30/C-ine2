@@ -46,7 +46,8 @@ Menu::Menu(vector <Usuario> users, vector <Gestor> gestores)
 
 Menu::~Menu()
 {
-	//No hay que hacer delete porque no tenemos variables que necesiten de un new
+	this->users.clear();
+	this->gestores.clear();
 }
 
 vector<Gestor> Menu::getGestores()
@@ -522,15 +523,4 @@ void Menu::descuentos()
 
 	}while(correcto == false);
 
-}
-
-int Menu:: exists(const char *fname)
-{
-    FILE *file;
-    if ((file = fopen(fname, "r")))
-    {
-        fclose(file);
-        return 1;
-    }
-    return 0;
 }
